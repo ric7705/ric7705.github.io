@@ -27,7 +27,7 @@
 <p>該筆就可拿到剩餘的12754-10000=2754筆資料</p>
 <p>那如果已經沒資料再繼續翻頁(call scroll)會怎樣?<br>他就給你hits.hits=[]的response而已</p>
 <p>綜合以上的運作流程, 我們就可以寫出大概的流程了:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def handle():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">result &#x3D; es.search() # query第一次</span><br><span class="line">handle(result)</span><br><span class="line"></span><br><span class="line">while(len(result[&#39;hits.hits&#39;])&gt;0): 代表還有資料</span><br><span class="line">    result &#x3D; es.scroll()</span><br><span class="line">    handle(result)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def handle():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">result &#x3D; es.search() # query第一次</span><br><span class="line">handle(result)</span><br><span class="line"></span><br><span class="line">while(len(result[&#39;hits.hits&#39;])&gt;0): # 代表還有資料</span><br><span class="line">    result &#x3D; es.scroll()</span><br><span class="line">    handle(result)</span><br></pre></td></tr></table></figure>
 
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記:"></a>後記:</h2><p>其實我花最多時間的部分在於查詢到底search跟scroll API要給一個scroll參數, 這是代表啥意思?<br>他其實是代表該次query之後這個view會維持多久, 以上面例子來說, 2m等於會維持2分鐘.</p>
 <p>再白話一點就是這兩分鐘之內, 如果你的資料有被異動, 你不會拿到新的資料,<br>這樣做也是挺合理的,<br>我可能每次翻頁後要做一些耗時的IO操作, 可能全部翻完頁要花5m, 這樣我就可以設定scroll=1m-5m,<br>確保es給你的資料是程式開始執行瞬間的資料,<br>上面的scroll給1m-5m資料範圍是因為實際上要根據你總共翻幾頁, 要省事一點就直接設5m,<br>不然其實每次翻頁(call scroll)時帶的scroll參數其實都會再刷新view維持的時間.</p>
