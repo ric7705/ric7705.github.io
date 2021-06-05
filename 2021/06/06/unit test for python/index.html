@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="unittestpython的內建unittest library 這套工具很簡單, 只要掌握幾個原則即可  檔名使用test_xxxx: python UT的命名慣例, 如此命名以後改UT套件會較可攜 test case需寫在class內並繼承unittest.TestCase main方法呼叫unittest.main() 會去掃該檔所有有繼承unittest.TestCase的class內的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unit test for python">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/unit%20test%20for%20python/index.html">
+<meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="unittestpython的內建unittest library 這套工具很簡單, 只要掌握幾個原則即可  檔名使用test_xxxx: python UT的命名慣例, 如此命名以後改UT套件會較可攜 test case需寫在class內並繼承unittest.TestCase main方法呼叫unittest.main() 會去掃該檔所有有繼承unittest.TestCase的class內的">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:38:30.552Z">
+<meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/unit%20test%20for%20python/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>unit test for python | 程式學習筆記</title><meta name="robots" content="noindex">
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YCWHQ5ZK46');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程式學習筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/unit%20test%20for%20python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          unit test for python
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:38:30" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h2><p>python的內建unittest library</p>
+<p>這套工具很簡單, 只要掌握幾個原則即可</p>
+<ul>
+<li>檔名使用test_xxxx: python UT的命名慣例, 如此命名以後改UT套件會較可攜</li>
+<li>test case需寫在class內並繼承unittest.TestCase</li>
+<li>main方法呼叫unittest.main()<ul>
+<li>會去掃該檔所有有繼承unittest.TestCase的class內的func來執行</li>
+</ul>
+</li>
+</ul>
+<p>內建的assertion:</p>
+<ul>
+<li>assertEqual(a, b): a==b</li>
+<li>assertTrue/False(x):  x==True/False</li>
+<li>assertIsNone(x): x==None </li>
+<li>assertIn(a, b): x in b </li>
+<li>assertRaises(exception type): 有拋出exception type才pass</li>
+</ul>
+<p>以上assertion有些會有反義, 這個透過pycharm再查就可以了</p>
+<p>注意有時候反義也要去測試, 口語上表達是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我給錯誤的值, 他應該會給我None吧</span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">型態給錯了, 應該要給我拋錯吧</span><br></pre></td></tr></table></figure>
+
+<p>上例code的實現如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def test_bad_type(self):</span><br><span class="line">        data &#x3D; &quot;banana&quot;</span><br><span class="line">        with self.assertRaises(TypeError):</span><br><span class="line">            result &#x3D; sum(data)</span><br></pre></td></tr></table></figure>
+
+<p>對於python弱型別而言, 上述的assertRaises可以善加利用</p>
+<h3 id="CLI指令"><a href="#CLI指令" class="headerlink" title="CLI指令"></a>CLI指令</h3><p>如果直接執行檔案裡的main方法, 只能掃一個檔案的test case,<br>通常會搭配CLI來一次掃全部, 有一些常用指令可用</p>
+<p>只對test.py跑UT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m unittest test</span><br></pre></td></tr></table></figure>
+
+<p>-v來列出詳細資訊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m unittest -v test</span><br></pre></td></tr></table></figure>
+
+<p>自動掃該目錄下的所有test開頭的檔案來執行UT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m unittest discover</span><br></pre></td></tr></table></figure>
+
+<p>note:<br>開發過程可以搭配IDE/editor的工具來方便跑UT, 就不用自己打指令了<br>pycharm/ visual studio code都有工具可以輔助執行UT</p>
+<h3 id="web-framework"><a href="#web-framework" class="headerlink" title="web framework"></a>web framework</h3><p>排除商業邏輯或是Utilites.py的部分,<br>有些test需要依賴route等flow時, 此時可使用framework提供的UT方案,<br>像Django或flask都有內建UT工具可作測試</p>
+<p>這邊只列Flask大致上的測試架構:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import my_app</span><br><span class="line">import unittest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyTestCase(unittest.TestCase):</span><br><span class="line"></span><br><span class="line">    def setUp(self):</span><br><span class="line">        my_app.app.testing &#x3D; True</span><br><span class="line">        self.app &#x3D; my_app.app.test_client()</span><br><span class="line"></span><br><span class="line">    def test_home(self):</span><br><span class="line">        result &#x3D; self.app.get(&#39;&#x2F;&#39;)</span><br><span class="line">        # Make your assertions</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://flask.pocoo.org/docs/0.12/testing/" target="_blank" rel="noopener">參考Flask官方</a></p>
+<p><a href="https://realpython.com/python-testing/" target="_blank" rel="noopener">Ref</a></p>
+<h3 id="mock"><a href="#mock" class="headerlink" title="mock"></a>mock</h3><p>Python 3.3之後, built-in的unittest套件已新增了mock, unittest.mock</p>
+<p>概念是產生一個假物件Mock(), 可以assign給任何obj, 該obj變成假的<br>之後便可以驗證該obj:</p>
+<ul>
+<li>是否有被call?</li>
+<li>被call幾次?</li>
+<li>如何被call?</li>
+</ul>
+<h4 id="自己產生Mock"><a href="#自己產生Mock" class="headerlink" title="自己產生Mock"></a>自己產生Mock</h4><p>驗證是否被call, call幾次:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">json &#x3D; Mock()</span><br><span class="line">json.loads(&#39;&#123;&quot;key&quot;: &quot;value&quot;&#125;&#39;)</span><br><span class="line">json.loads.assert_called()</span><br><span class="line">json.loads.assert_called_with(&#39;&#123;&quot;key&quot;: &quot;value&quot;&#125;&#39;)</span><br><span class="line">assert json.loads.call_count&#x3D;&#x3D;3</span><br></pre></td></tr></table></figure>
+
+<p>控制回傳值:<br>目的是把外部依賴的資料固定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">datetime &#x3D; Mock()</span><br><span class="line">datetime.datetime.today.return_value &#x3D; tuesday</span><br><span class="line">assert is_weekday()</span><br></pre></td></tr></table></figure>
+
+<p>控制Exception:<br>要控制在回傳之前拋出的Exception, 使用side_effect</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def get_holidays():</span><br><span class="line">    r &#x3D; requests.get(&#39;http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;holidays&#39;)</span><br><span class="line">    if r.status_code &#x3D;&#x3D; 200:</span><br><span class="line">        return r.json()</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">class TestCalendar(unittest.TestCase):</span><br><span class="line">    def test_get_holidays_timeout(self):</span><br><span class="line">        # Test a connection timeout</span><br><span class="line">        requests.get.side_effect &#x3D; Timeout</span><br><span class="line">        with self.assertRaises(Timeout):</span><br><span class="line">            get_holidays()</span><br></pre></td></tr></table></figure>
+
+<p>給Mock初始值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mock &#x3D; Mock(side_effect&#x3D;Exception)  # 給預設會拋Exception的值</span><br><span class="line">mock &#x3D; Mock(return_value&#x3D;True)      # 給預設會回傳True</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用patch"><a href="#使用patch" class="headerlink" title="使用patch"></a>使用patch</h4><p>自己產生Mock會比較繁瑣一點, 通常使用patch, 幫你把一些東西自動設定起來</p>
+<p>基本用法: mock一個object</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def get_holidays():</span><br><span class="line">    r &#x3D; requests.get(&#39;http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;holidays&#39;)</span><br><span class="line">    if r.status_code &#x3D;&#x3D; 200:</span><br><span class="line">        return r.json()</span><br><span class="line">    return None</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class TestCalendar(unittest.TestCase):</span><br><span class="line">    @patch(&#39;my_calendar.requests&#39;)          # 檔名.object名字</span><br><span class="line">    def test_get_holidays_timeout(self, mock_requests): # 去接mock()</span><br><span class="line">            mock_requests.get.side_effect &#x3D; Timeout</span><br><span class="line">            with self.assertRaises(Timeout):</span><br><span class="line">                get_holidays()</span><br><span class="line">                mock_requests.get.assert_called_once()</span><br></pre></td></tr></table></figure>
+
+<p>ps: 除了使用decorator之外, 亦可使用context manager的做法, 這邊先略過</p>
+<p>只mock一個method:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalendar</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line"><span class="meta">    @patch.object(requests, 'get', side_effect=requests.exceptions.Timeout)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_get_holidays_timeout</span><span class="params">(self, mock_requests)</span>:</span></span><br><span class="line">            <span class="keyword">with</span> self.assertRaises(requests.exceptions.Timeout):</span><br><span class="line">                get_holidays()</span><br></pre></td></tr></table></figure>
+
+<h4 id="mock的一些雷"><a href="#mock的一些雷" class="headerlink" title="mock的一些雷"></a>mock的一些雷</h4><p>因爲Mock只是個假的空物件, 不小心可能會來你寫出無效的UT</p>
+<p>例如原本test用到了.assert_not_called(), 後來物件名字改變後, 該Test依然有效<br>甚至是mock()本身的method你拼錯, 依然有效,例如<br>mock_obj.asert_called(), 發生原本要測條件變成幫mock_obj new一個method的情形</p>
+<p>解法: 使用Specifications(這個在pytest-mock應該幫你做了)</p>
+<p>指定mock物件只有幾種有效方法或屬性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">calendar &#x3D; Mock(spec&#x3D;[&#39;is_weekday&#39;, &#39;get_holidays&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>直接用file或object來指定spec:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">calendar = Mock(spec=my_calendar)  <span class="comment"># my_calendar是檔名, 他會自己做match</span></span><br></pre></td></tr></table></figure>
+
+<p>上面是說原理, 其實最快的方法是使用autospec</p>
+<p>context manager的做法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">with patch(&#39;__main__.my_calendar&#39;, autospec&#x3D;True) as calendar:</span><br></pre></td></tr></table></figure>
+<p>decorator的做法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@patch.object(requests, autospec&#x3D;True)</span><br><span class="line">def test_xxx(request_mock):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="pytest-套件"><a href="#pytest-套件" class="headerlink" title="pytest 套件"></a>pytest 套件</h2><p>使用這套的優點:</p>
+<ul>
+<li>很多人用: 後來flask都改成用這套了</li>
+<li>靈活: 不用一定得用class包起來</li>
+<li>報表: 報表較好看, 還支援code coverage</li>
+<li>支援python原生symbol: 例如assert</li>
+<li>也可以跑build-in unittest的UT</li>
+</ul>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>預期結果(==, !=):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># content of test_sample.py</span><br><span class="line">def func(x):</span><br><span class="line">    return x + 1</span><br><span class="line"></span><br><span class="line">def test_answer():</span><br><span class="line">    assert func(3) &#x3D;&#x3D; 5</span><br></pre></td></tr></table></figure>
+
+
+<p>預期例外(Exception):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># content of test_sysexit.py</span><br><span class="line">import pytest</span><br><span class="line">def f():</span><br><span class="line">    raise SystemExit(1)</span><br><span class="line"></span><br><span class="line">def test_mytest():</span><br><span class="line">    with pytest.raises(SystemExit):</span><br><span class="line">        f()</span><br></pre></td></tr></table></figure>
+
+<h3 id="檔案和test-case識別"><a href="#檔案和test-case識別" class="headerlink" title="檔案和test case識別"></a>檔案和test case識別</h3><p>要求:</p>
+<ul>
+<li>檔案:須為test_開頭 or _test結尾</li>
+<li>test case: 需test開頭</li>
+</ul>
+<p>以下指令會執行所有UT, 在下command所在的所有資料夾都會掃:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py.test</span><br></pre></td></tr></table></figure>
+
+<p>只掃特定UT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py.test test_sample1.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="指令執行可選參數"><a href="#指令執行可選參數" class="headerlink" title="指令執行可選參數"></a>指令執行可選參數</h3><p>-v: 囉唆的印結果<br>-k: 只跑test case(function)包含substring的<br>-m: 只跑有用@ 去mark的test case</p>
+<h3 id="coverage"><a href="#coverage" class="headerlink" title="coverage"></a>coverage</h3><p>使用這套pytest-cov</p>
+<p>安裝:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest-cov</span><br></pre></td></tr></table></figure>
+
+<p>執行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">py.test --cov&#x3D;myproj tests&#x2F;      # specific directory</span><br><span class="line">py.test --cov&#x3D;.                  # current directory</span><br></pre></td></tr></table></figure>
+
+<p>結果會像這樣:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-------------------- coverage: ... ---------------------</span><br><span class="line">Name                 Stmts   Miss  Cover</span><br><span class="line">----------------------------------------</span><br><span class="line">myproj&#x2F;__init__          2      0   100%</span><br><span class="line">myproj&#x2F;myproj          257     13    94%</span><br><span class="line">myproj&#x2F;feature4286      94      7    92%</span><br><span class="line">----------------------------------------</span><br><span class="line">TOTAL                  353     20    94%</span><br></pre></td></tr></table></figure>
+
+<p>輸出為網頁(htmlcov資料夾):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py.test --cov&#x3D;. --cov-report&#x3D;html</span><br></pre></td></tr></table></figure>
+
+
+
+<p>濾掉不需跑coverage的檔案:<br>編輯.coveragerc設定檔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[run]</span><br><span class="line">omit &#x3D; </span><br><span class="line">    tests&#x2F;*</span><br><span class="line">    *&#x2F;__init__.py</span><br></pre></td></tr></table></figure>
+
+<p>執行時指定設定檔:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py.test --cov-config&#x3D;.coveragerc</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pytest-fixtures"><a href="#Pytest-fixtures" class="headerlink" title="Pytest fixtures"></a>Pytest fixtures</h3><p>fixtures代表你要跑UT之前需要準備的前置作業(e.g 跑DB, 放測試資料等等)</p>
+<p>fixture以function程式呈現, 且@標記為fixture, 之後跑test case時會幫你帶進去</p>
+<p>fixture如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pytest</span><br><span class="line">@pytest.fixture</span><br><span class="line">def supply_AA_BB_CC():</span><br><span class="line">	aa&#x3D;25</span><br><span class="line">	bb &#x3D;35</span><br><span class="line">	cc&#x3D;45</span><br><span class="line">	return [aa,bb,cc]</span><br></pre></td></tr></table></figure>
+
+<p>ut如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def test_comparewithAA(supply_AA_BB_CC):</span><br><span class="line">	zz&#x3D;35</span><br><span class="line">	assert supply_AA_BB_CC[0]&#x3D;&#x3D;zz,&quot;aa and zz comparison failed&quot;</span><br></pre></td></tr></table></figure>
+
+<p>fixture如果沒有放在test case相同檔案內會出錯,<br>對於多檔同時使用的fixture, 我們可以集中放在外部的conftest.py管理<br>跑UT時若在該檔找不到, 會自動去conftest.py找fixture</p>
+<p>note: 建議為每個fixture寫上doctring, 可以搭配以下指令可以列出所有fixture</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest --fixtures</span><br></pre></td></tr></table></figure>
+
+<h3 id="參數"><a href="#參數" class="headerlink" title="參數"></a>參數</h3><p>目的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This enables us to test different scenarios, all in one function</span><br></pre></td></tr></table></figure>
+
+<p>直接上範例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pytest</span><br><span class="line">@pytest.mark.parametrize(&quot;input1, input2, output&quot;,[(5,5,10),(3,5,12)])</span><br><span class="line">def test_add(input1, input2, output):</span><br><span class="line">	assert input1+input2 &#x3D;&#x3D; output,&quot;failed&quot;</span><br></pre></td></tr></table></figure>
+
+<p>結果會是.F (第二次錯誤原因是 3+5 != 12)</p>
+<p>note: 感覺param有點多餘, 其實是為了要對應正確, 例如有使用fixture時:<br>def test_add(my_fixture, input1, input2, output,)</p>
+<h3 id="跳過UT"><a href="#跳過UT" class="headerlink" title="跳過UT"></a>跳過UT</h3><p>支援兩種:</p>
+<ul>
+<li>@pytest.mark.skip: 直接跳過該test case</li>
+<li>@pytest.mark.xfail: 還是會執行, 但不列入計算</li>
+</ul>
+<h3 id="加速ut"><a href="#加速ut" class="headerlink" title="加速ut"></a>加速ut</h3><p>使用pytest-xdist</p>
+<p>安裝:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest-xdist</span><br></pre></td></tr></table></figure>
+
+<p>執行: 需指定worker(process)數</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py.test -n 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用mock"><a href="#使用mock" class="headerlink" title="使用mock"></a>使用mock</h3><p>可以安裝這套pytest-mock, 把mock做一層wrapper,<br>但還是原生mock比較多資源可以找, 再來是IDE可能不支援inspect code</p>
+<p><a href="http://note.qidong.name/2018/02/pytest-mock/" target="_blank" rel="noopener">Ref</a></p>
+<h2 id="為不同python版本-環境做測試"><a href="#為不同python版本-環境做測試" class="headerlink" title="為不同python版本/環境做測試"></a>為不同python版本/環境做測試</h2><p><a href="https://tox.readthedocs.io/en/latest/" target="_blank" rel="noopener">可以參考這套工具</a></p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#unittest"><span class="nav-number">1.</span> <span class="nav-text">unittest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CLI指令"><span class="nav-number">1.1.</span> <span class="nav-text">CLI指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-framework"><span class="nav-number">1.2.</span> <span class="nav-text">web framework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mock"><span class="nav-number">1.3.</span> <span class="nav-text">mock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自己產生Mock"><span class="nav-number">1.3.1.</span> <span class="nav-text">自己產生Mock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用patch"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用patch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mock的一些雷"><span class="nav-number">1.3.3.</span> <span class="nav-text">mock的一些雷</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pytest-套件"><span class="nav-number">2.</span> <span class="nav-text">pytest 套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">2.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#檔案和test-case識別"><span class="nav-number">2.2.</span> <span class="nav-text">檔案和test case識別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令執行可選參數"><span class="nav-number">2.3.</span> <span class="nav-text">指令執行可選參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coverage"><span class="nav-number">2.4.</span> <span class="nav-text">coverage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pytest-fixtures"><span class="nav-number">2.5.</span> <span class="nav-text">Pytest fixtures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參數"><span class="nav-number">2.6.</span> <span class="nav-text">參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳過UT"><span class="nav-number">2.7.</span> <span class="nav-text">跳過UT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加速ut"><span class="nav-number">2.8.</span> <span class="nav-text">加速ut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用mock"><span class="nav-number">2.9.</span> <span class="nav-text">使用mock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#為不同python版本-環境做測試"><span class="nav-number">3.</span> <span class="nav-text">為不同python版本&#x2F;環境做測試</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ceiere</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ceiere</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

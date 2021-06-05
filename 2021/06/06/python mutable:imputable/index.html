@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="物件本身有三個元素:  identity type:  value  identity物件被建立後identity不會變, 可以想成是物件被放在mem的address 可以用is來比對物件的identity, 即比較address可以用id來獲得物件的identity的整數表示  type跟id一樣無法改變, 可使用type來獲取obj的型態 value相對於is比較mem address, 比較">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python mutable&#x2F;imutable">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/python%20mutable:imputable/index.html">
+<meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="物件本身有三個元素:  identity type:  value  identity物件被建立後identity不會變, 可以想成是物件被放在mem的address 可以用is來比對物件的identity, 即比較address可以用id來獲得物件的identity的整數表示  type跟id一樣無法改變, 可使用type來獲取obj的型態 value相對於is比較mem address, 比較">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:30:26.416Z">
+<meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/python%20mutable:imputable/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python mutable/imutable | 程式學習筆記</title><meta name="robots" content="noindex">
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YCWHQ5ZK46');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程式學習筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20mutable:imputable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python mutable/imutable
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:30:26" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>物件本身有三個元素:</p>
+<ul>
+<li>identity</li>
+<li>type: </li>
+<li>value</li>
+</ul>
+<h2 id="identity"><a href="#identity" class="headerlink" title="identity"></a>identity</h2><p>物件被建立後identity不會變, 可以想成是物件被放在mem的address</p>
+<p>可以用is來比對物件的identity, 即比較address<br>可以用id來獲得物件的identity的整數表示 </p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>跟id一樣無法改變, 可使用type來獲取obj的型態</p>
+<h2 id="value"><a href="#value" class="headerlink" title="value"></a>value</h2><p>相對於is比較mem address, 比較value可使用==<br>有些obj在建立後value是可變得稱為mutable, 若否則為immutable</p>
+<p>mutable: list, dictionary, set and user-defined classes<br>immutable: int, float, bool, str, tuple, unicode</p>
+<p>對immutable改值後, 原本的值’依然存在mem’, 只是新分配一個mem出來而已<br>有這個概念比較好理解</p>
+<p>list, tuple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list_values &#x3D; [1, 2, 3]</span><br><span class="line">set_values &#x3D; (1, 2, 3)</span><br><span class="line">print(id(list_values))</span><br><span class="line">print(id(set_values))</span><br><span class="line">#</span><br><span class="line">list_values +&#x3D; [4, 5, 6]</span><br><span class="line">set_values +&#x3D; (4, 5, 6)</span><br><span class="line">print(id(list_values))</span><br><span class="line">print(id(set_values))</span><br></pre></td></tr></table></figure>
+<p>list是mutable, 所以id不會變, 但值改變了<br>tuple是immutable, 值改變後, id也變了(重新alloc一個mem給他)</p>
+<p>int, string:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">number &#x3D; 42</span><br><span class="line">print(id(number))</span><br><span class="line"></span><br><span class="line">number &#x3D; 42</span><br><span class="line">print(id(number))</span><br><span class="line"></span><br><span class="line">number +&#x3D; 1</span><br><span class="line">print(id(number))</span><br></pre></td></tr></table></figure>
+
+<p>int, string很常用, 但其實是immutable, 對他改值一樣會重新alloc新的mem</p>
+<p>使用immutable的index時有點tricky的地方:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">a[0] &#x3D; 100</span><br></pre></td></tr></table></figure>
+<p>你以為可執行, 只是a的id改變, 其實是會噴錯訊,<br>說tuple沒有assignment operatrion<br>這點要注意一下, 其實就注意tuple即可,<br>因為immutable又有container性質的只有tuple而已</p>
+<h2 id="immutable的assign"><a href="#immutable的assign" class="headerlink" title="immutable的assign"></a>immutable的assign</h2><p>對immutable改值會觸發alloc mem, 那assign相同的值呢?<br>答案是看是否有container性質, 幸運的是同時具備contain+immutable的只有tuple</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 123</span><br><span class="line">print(id(a))</span><br><span class="line">a &#x3D; 123</span><br><span class="line">print(id(a))</span><br></pre></td></tr></table></figure>
+<p>對immutable沒container性質的obj來說, mem不變</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">print(id(a))</span><br><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">print(id(a))</span><br></pre></td></tr></table></figure>
+<p>對tuple而言, 雖然內容看起來一樣, 但mem也變了</p>
+<h2 id="passing"><a href="#passing" class="headerlink" title="passing"></a>passing</h2><p>mutable/immutable在passing上有不同情況發生</p>
+<h3 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h3><p>mutable的obj, pass的話會是call by reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">values &#x3D; [4, 5, 6]</span><br><span class="line">values2 &#x3D; values</span><br><span class="line">print(id(values))</span><br><span class="line">print(id(values2))</span><br><span class="line"></span><br><span class="line">values.append(7)</span><br><span class="line">print(values is values2)</span><br><span class="line">print(values)</span><br><span class="line">print(values2)</span><br></pre></td></tr></table></figure>
+
+<p>list是mutable, assign給其他變數, 或是傳遞給function,<br>實際上都是把變數指向相同mem,<br>所以以上會印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2450343166664</span><br><span class="line">2450343166664</span><br><span class="line">True</span><br><span class="line">[4, 5, 6, 7]</span><br><span class="line">[4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
+
+<h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 0</span><br><span class="line">print(id(x))</span><br><span class="line">y &#x3D; x</span><br><span class="line">x &#x3D; 3</span><br><span class="line">print(id(x))</span><br><span class="line">print(x)</span><br><span class="line">print(id(y))</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
+
+<p>印出:<br>4397102160<br>4397102256<br>3<br>4397102160<br>0</p>
+<p>str是immutable, 傳給其他var時, 此時是指向相同mem,<br>但一但其中有人改變value後, 會重新alloc一個mem給他<br>所以帶有點lazy的概念<br>這邊要記住, 誰改值的誰就會改變mem</p>
+<h2 id="container"><a href="#container" class="headerlink" title="container"></a>container</h2><p>有些type具有container性質, 對於可否變的探討,<br>只要知道container是存id即可</p>
+<p>討論immutable container包含mutable obj的情況</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">skills &#x3D; [&quot;Programming&quot;, &quot;Machine Learning&quot;, &quot;Statistics&quot;]</span><br><span class="line">person &#x3D; (129392130, skills)</span><br><span class="line">print(id(person))</span><br><span class="line">print(person)</span><br><span class="line">skills[2] &#x3D; &quot;Maths&quot;</span><br><span class="line">print(id(person))</span><br><span class="line">print(person)</span><br></pre></td></tr></table></figure>
+
+<p>先從value來探討, tuple不可變, 但包含了可變的list<br>對list改值沒問題</p>
+<p>那id呢, list value改變id不變,<br>那tuple呢, 感覺內部值也改變了, 但其實不變,<br>對於container, 可以想像tuple是類似存這樣的東西:<br>(129392130, skills_mem_address)<br>雖然skills_mdm_address的value變了, 但因為id沒變, 所以對於tuple來說,<br>他不算改變, 所以id一樣沒變<br>(這東西會牽涉到copy(), deepcopy()議題)</p>
+<hr>
+<p>討論immutable container包含immutable obj的情況<br>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">unique_identifier &#x3D; 42</span><br><span class="line">age &#x3D; 24</span><br><span class="line">skills &#x3D; (&quot;Python&quot;, &quot;pandas&quot;, &quot;scikit-learn&quot;)</span><br><span class="line">info &#x3D; (unique_identifier, age, skills)</span><br><span class="line">print(id(unique_identifier))</span><br><span class="line">print(id(age))</span><br><span class="line">print(id(info))</span><br><span class="line">print(info)</span><br><span class="line"></span><br><span class="line">unique_identifier &#x3D; 50</span><br><span class="line">age +&#x3D; 1</span><br><span class="line">skills +&#x3D; (&quot;machine learning&quot;, &quot;deep learning&quot;)</span><br><span class="line">print(id(unique_identifier))</span><br><span class="line">print(id(age))</span><br><span class="line">print(id(info))</span><br><span class="line">print(info)</span><br></pre></td></tr></table></figure>
+<p>印出:<br>4496697744<br>4496697168<br>4504510824<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’))<br>4496698000<br>4496697200<br>4504510824<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’))<br>4504461672<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’), 1, 2, 3)</p>
+<p>info是tuple, 包含三個元素, immutable int, immutable int, immutable container</p>
+<p>這三個都是immutable, 又因為對immuatble改值後, 舊有值依然存在mem,<br>且最外層info obj依然指向舊的mem, 所以info的value, id依然不變</p>
+<h2 id="效率上的考量"><a href="#效率上的考量" class="headerlink" title="效率上的考量"></a>效率上的考量</h2><ul>
+<li>immutable obj的存取速度較快</li>
+<li>但若對immutable改值會較慢, 因為必須alloc新的mem</li>
+<li>對於會改值的操作使用mutable較有效率</li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><p><a href="https://towardsdatascience.com/https-towardsdatascience-com-python-basics-mutable-vs-immutable-objects-829a0cb1530a" target="_blank" rel="noopener">https://towardsdatascience.com/https-towardsdatascience-com-python-basics-mutable-vs-immutable-objects-829a0cb1530a</a></p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#identity"><span class="nav-number">1.</span> <span class="nav-text">identity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type"><span class="nav-number">2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value"><span class="nav-number">3.</span> <span class="nav-text">value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#immutable的assign"><span class="nav-number">4.</span> <span class="nav-text">immutable的assign</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#passing"><span class="nav-number">5.</span> <span class="nav-text">passing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mutable"><span class="nav-number">5.1.</span> <span class="nav-text">mutable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable"><span class="nav-number">5.2.</span> <span class="nav-text">immutable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container"><span class="nav-number">6.</span> <span class="nav-text">container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效率上的考量"><span class="nav-number">7.</span> <span class="nav-text">效率上的考量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">8.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ceiere</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ceiere</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

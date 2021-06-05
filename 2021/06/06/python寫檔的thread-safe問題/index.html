@@ -20,15 +20,21 @@
     var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="程式學習筆記">
-<meta property="og:url" content="https://ric7705.github.io/tags/archives/2021/index.html">
+  <meta name="description" content="假設檔案就一個, 根據寫檔的來源考慮以下兩種情況:  多個thread 多個process  多個thread這個好解, 因為開thread代表你有一個process, 可以對生出來的thread做控制,我可以在寫檔案的區塊上鎖就好了 或是直接使用python內建的logging, 本身就是thread-safe的 多個process這個比較棘手一點, 又可以分成兩種情況:  原本有一個proce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python寫檔的thread-safe問題">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/python%E5%AF%AB%E6%AA%94%E7%9A%84thread-safe%E5%95%8F%E9%A1%8C/index.html">
 <meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="假設檔案就一個, 根據寫檔的來源考慮以下兩種情況:  多個thread 多個process  多個thread這個好解, 因為開thread代表你有一個process, 可以對生出來的thread做控制,我可以在寫檔案的區塊上鎖就好了 或是直接使用python內建的logging, 本身就是thread-safe的 多個process這個比較棘手一點, 又可以分成兩種情況:  原本有一個proce">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:34:59.939Z">
 <meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://ric7705.github.io/tags/archives/2021/">
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/python%E5%AF%AB%E6%AA%94%E7%9A%84thread-safe%E5%95%8F%E9%A1%8C/">
 
 
 <script id="page-configurations">
@@ -36,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>歸檔 | 程式學習筆記</title>
+  <title>python寫檔的thread-safe問題 | 程式學習筆記</title><meta name="robots" content="noindex">
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
     <script>
@@ -187,50 +193,98 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共有 1 篇文章。 繼續努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%E5%AF%AB%E6%AA%94%E7%9A%84thread-safe%E5%95%8F%E9%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python寫檔的thread-safe問題
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:34:59" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <p>假設檔案就一個, 根據寫檔的來源考慮以下兩種情況:</p>
+<ul>
+<li>多個thread</li>
+<li>多個process</li>
+</ul>
+<h2 id="多個thread"><a href="#多個thread" class="headerlink" title="多個thread"></a>多個thread</h2><p>這個好解, 因為開thread代表你有一個process, 可以對生出來的thread做控制,<br>我可以在寫檔案的區塊上鎖就好了</p>
+<p>或是直接使用python內建的logging, 本身就是thread-safe的</p>
+<h2 id="多個process"><a href="#多個process" class="headerlink" title="多個process"></a>多個process</h2><p>這個比較棘手一點, 又可以分成兩種情況:</p>
+<ul>
+<li>原本有一個process(主程式), 透過multiprocessing開process </li>
+<li>多開程式</li>
+</ul>
+<p>第一種情況起碼還可以對process做掌控, 透過multiprocessing的Queue,<br>概念是process往Queue去丟訊息, 此外需要一個consumer去從Queue拿訊息<br>跟Message Queue概念很像</p>
+<p>第二種就麻煩了(偏偏我遇到的是這一種啊…)<br>因為是不同程式, process是OS開的, 這個就很難去對process做控制<br>解法就是透過Server(目前還沒找到其他解法不屬於這個的)</p>
+<p>你開一個Server, 不同process寫log會呼叫server一個API, Server端做寫入的動作<br>或是你也可以用官方文件說的, 使用SocketHandler, 但也是要建SocketServer意思一樣<br>或是你用Message queue, 那還是一樣有Server</p>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p>那Flask是如何做到logging的, 如果Gunicorn開4個worker(4 process)<br>其實也挺直覺, 因為Gunicorn本身就有一個master process, 全交由他寫入即可 </p>
+<!-- flag of hidden posts -->
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-06-03T00:51:00+08:00"
-              content="2021-06-03">
-          06-03
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/03/es_search_api/" itemprop="url">
-            <span itemprop="name">Elastic search API</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+      </footer>
+    
   </article>
-
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -283,6 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多個thread"><span class="nav-number">1.</span> <span class="nav-text">多個thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多個process"><span class="nav-number">2.</span> <span class="nav-text">多個process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延伸閱讀"><span class="nav-number">3.</span> <span class="nav-text">延伸閱讀</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,28 +20,34 @@
     var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="程式學習筆記">
-<meta property="og:url" content="https://ric7705.github.io/tags/index.html">
+  <meta name="description" content="概念一但發生例外, 通常報完錯程式就立即停止了,藉由自己捕捉例外, 當程式錯誤時可以自我進行修復或重試 架構架構為:  BaseException  Exception KeyboardInterrupt SystemExit           最容易遇到的是Exception裡面的  Exception ArithmeticError RuntimeError TypeError    比較幾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python exception">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/python%20exception/index.html">
 <meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="概念一但發生例外, 通常報完錯程式就立即停止了,藉由自己捕捉例外, 當程式錯誤時可以自我進行修復或重試 架構架構為:  BaseException  Exception KeyboardInterrupt SystemExit           最容易遇到的是Exception裡面的  Exception ArithmeticError RuntimeError TypeError    比較幾">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:52:13.478Z">
 <meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://ric7705.github.io/tags/">
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/python%20exception/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>程式學習筆記</title>
+  <title>python exception | 程式學習筆記</title><meta name="robots" content="noindex">
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
     <script>
@@ -187,13 +193,14 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/03/es_search_api/">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20exception/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,10 +212,9 @@
       <meta itemprop="name" content="程式學習筆記">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/03/es_search_api/" class="post-title-link" itemprop="url">Elastic search API</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          python exception
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -218,7 +224,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-06-03 00:51:00 / 修改時間：02:04:31" itemprop="dateCreated datePublished" datetime="2021-06-03T00:51:00+08:00">2021-06-03</time>
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:52:13" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +232,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">工作筆記</span></a>
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
                 </span>
             </span>
 
@@ -241,50 +247,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>工作上遇到一個情境, 我需要寫scheduler定期去call ES API, 並persist到postgres上,<br>資料大概10分鐘筆數會有12000上下, 所以必須使用pagination來解決</p>
-<p>Elastic search 提供API可對資料進行修改查詢等功能,<br>由於我使用python, 所以直接使用elasticsearch套件來call API,<br>安裝:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>先call search API, 取得第一筆資料:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; es.search(</span><br><span class="line">    index&#x3D;&quot;你的index&quot;,</span><br><span class="line">    body&#x3D;query_body,</span><br><span class="line">    scroll&#x3D;&#39;2m&#39;,</span><br><span class="line">    size&#x3D;10000,</span><br><span class="line">    sort&#x3D;&#39;timestamp:asc&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>會拿到如下資料:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;_scroll_id&quot;: &quot;DnF1ZXJ5VGhlbkZldGNoDgAAAAAEwJa8Fml....&quot;,</span><br><span class="line">  &quot;_shards&quot;: &#123;</span><br><span class="line">    &quot;failed&quot;: 0,</span><br><span class="line">    &quot;skipped&quot;: 0,</span><br><span class="line">    &quot;successful&quot;: 10,</span><br><span class="line">    &quot;total&quot;: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;hits&quot;: &#123;</span><br><span class="line">    &quot;hits&quot;: [略],</span><br><span class="line">    &quot;max_score&quot;: null,</span><br><span class="line">    &quot;total&quot;: &#123;</span><br><span class="line">      &quot;relation&quot;: &quot;eq&quot;,</span><br><span class="line">      &quot;value&quot;: 12754</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;timed_out&quot;: false,</span><br><span class="line">  &quot;took&quot;: 3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中比較重要的幾個欄位有:</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>一但發生例外, 通常報完錯程式就立即停止了,<br>藉由自己捕捉例外, 當程式錯誤時可以自我進行修復或重試</p>
+<h2 id="架構"><a href="#架構" class="headerlink" title="架構"></a>架構</h2><p>架構為:</p>
 <ul>
-<li>_scroll_id: 後續的分頁查詢須帶這個id</li>
-<li>_shards: 該次query使用了多少shard</li>
-<li>took: es 查詢花費時間, 單位ms</li>
-<li>hits.hits: 是list, 實際的documents</li>
-<li>hits.total: 該query總筆數為多少</li>
+<li>BaseException <ul>
+<li>Exception</li>
+<li>KeyboardInterrupt</li>
+<li>SystemExit       </li>
 </ul>
-<p>以該次query來說, 我hits.hits裡面會有10000筆, 因為我request一開始給定size=10000,<br>size代表一頁拿多少筆, 預設為10, 最多為10000.</p>
-<p>後續的翻頁取資料, 方法就是call scroll API</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; es.scroll(scroll_id&#x3D;&#39;search給的_scroll_id&#39;, scroll&#x3D;&#39;2m&#39;)</span><br></pre></td></tr></table></figure>
-<p>該筆就可拿到剩餘的12754-10000=2754筆資料</p>
-<p>那如果已經沒資料再繼續翻頁(call scroll)會怎樣?<br>他就給你hits.hits=[]的response而已</p>
-<p>綜合以上的運作流程, 我們就可以寫出大概的流程了:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def handle():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">result &#x3D; es.search() # query第一次</span><br><span class="line">handle(result)</span><br><span class="line"></span><br><span class="line">while(len(result[&#39;hits.hits&#39;])&gt;0): # 代表還有資料</span><br><span class="line">    result &#x3D; es.scroll()</span><br><span class="line">    handle(result)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最容易遇到的是Exception裡面的</p>
+<ul>
+<li>Exception<ul>
+<li>ArithmeticError</li>
+<li>RuntimeError</li>
+<li>TypeError</li>
+</ul>
+</li>
+</ul>
+<p>比較幾種常見用法<br>    - except:<br>        - 捕抓所有的例外(從BaseException往下)<br>    - except Exception as e:<br>        - 只捕捉Exception的(從Exception往下)<br>        - 使用as e可以順便查看錯訊<br>    - except BaseException as e:<br>        - 綜合前面兩者, 兼具查看錯訊和捕捉所有的功能   </p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    # code</span><br><span class="line">except:</span><br><span class="line">    # 運行條件: try區塊有錯時(此例是捕捉所有例外)</span><br><span class="line">else:</span><br><span class="line">    # 運行條件: try區塊無錯誤時</span><br><span class="line">finally:</span><br><span class="line">    # 運行條件: try區塊無論是否有錯都會執行</span><br></pre></td></tr></table></figure>
 
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記:"></a>後記:</h2><p>其實我花最多時間的部分在於查詢到底search跟scroll API要給一個scroll參數, 這是代表啥意思?<br>他其實是代表該次query之後這個view會維持多久, 以上面例子來說, 2m等於會維持2分鐘.</p>
-<p>再白話一點就是這兩分鐘之內, 如果你的資料有被異動, 你不會拿到新的資料,<br>這樣做也是挺合理的,<br>我可能每次翻頁後要做一些耗時的IO操作, 可能全部翻完頁要花5m, 這樣我就可以設定scroll=1m-5m,<br>確保es給你的資料是程式開始執行瞬間的資料,<br>上面的scroll給1m-5m資料範圍是因為實際上要根據你總共翻幾頁, 要省事一點就直接設5m,<br>不然其實每次翻頁(call scroll)時帶的scroll參數其實都會再刷新view維持的時間.</p>
+<p>finally: 通常用在必須關閉資源才離開程式時, 例如f.close()</p>
+<h2 id="搭配loop"><a href="#搭配loop" class="headerlink" title="搭配loop"></a>搭配loop</h2><p>若是遇到程式必須執行, 遇錯須重試時, 可搭配loo使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(10):</span><br><span class="line">    try:</span><br><span class="line">        # call API</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;retry&#39;)</span><br></pre></td></tr></table></figure>
 
-      
+<h2 id="拋出異常"><a href="#拋出異常" class="headerlink" title="拋出異常"></a>拋出異常</h2><p>使用raise, 有時候並不想立即處理錯誤, 而是往上拋給caller, 此時可使用raise<br>通常會在except區塊使用raise</p>
+<p>raise後面的obj 或class可省略,代表直接回傳當前的例外</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    a &#x3D; 1&#x2F;0</span><br><span class="line">except BaseException:</span><br><span class="line">    print(&#39;An exception flew by!&#39;)</span><br><span class="line">    # raise</span><br></pre></td></tr></table></figure>
+
+<p>使用raise有點像傳炸彈<br>A -&gt; B -&gt; C -&gt; D<br>如果D發生錯誤, 想要在B處理, 則<br>D捕抓到往上拋, C捕抓到往上拋, B捕抓到進行處理</p>
+<p>raise 的層級需要再研究一下, 以及使用raise的時機</p>
+<h2 id="自定義例外"><a href="#自定義例外" class="headerlink" title="自定義例外"></a>自定義例外</h2><p>開發程式時, 有時候會想把例外包裝起來, 自己做控制flow<br>實現方法只要寫個繼承可能發生錯誤的類就好了(例如Exception, BaseException等)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class MyError(Exception):  # 自定義例外</span><br><span class="line">    def __init__(self, value):</span><br><span class="line">        self.value &#x3D; value</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return repr(self.value)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    if 錯誤的情況:</span><br><span class="line">        raise MyError(2*2)</span><br><span class="line">except MyError as e:</span><br><span class="line">    print(&#39;My exception occurred, value:&#39;, e.value) # 印出4</span><br></pre></td></tr></table></figure>
+
+<p> 情況複雜時, 亦可以結構化整個自定義的例外繼承規則, 例如</p>
+<p> class Error(Exception):<br> class InputError(Error):<br> class APIError(Error):<br> 等等</p>
+<!-- flag of hidden posts -->
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -337,6 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架構"><span class="nav-number">2.</span> <span class="nav-text">架構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">3.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭配loop"><span class="nav-number">4.</span> <span class="nav-text">搭配loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拋出異常"><span class="nav-number">5.</span> <span class="nav-text">拋出異常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定義例外"><span class="nav-number">6.</span> <span class="nav-text">自定義例外</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
