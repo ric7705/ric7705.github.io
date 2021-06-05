@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>python logging | 程式學習筆記</title>
+  <title>python logging | 程式學習筆記</title><meta name="robots" content="noindex">
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
     <script>
@@ -312,7 +312,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if len(self.logger.handlers) &lt; 2:</span><br><span class="line">    streamhandler &#x3D; logging.StreamHandler()</span><br><span class="line"></span><br><span class="line">if len(self.logger.handlers) &lt; 2:</span><br><span class="line">    filehandler &#x3D; TimedRotatingFileHandler(logfile, when&#x3D;&quot;D&quot;, interval&#x3D;1, backupCount&#x3D;7)</span><br></pre></td></tr></table></figure>
 <p>因為有console, file兩個handler,<br>所以限制logger object內只能有兩個handler</p>
 <p>如果要正規一點的話, 應該要把自訂class寫成singleton</p>
-
+<!-- flag of hidden posts -->
     </div>
 
     

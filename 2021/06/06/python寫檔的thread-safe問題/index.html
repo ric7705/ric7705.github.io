@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>python寫檔的thread-safe問題 | 程式學習筆記</title>
+  <title>python寫檔的thread-safe問題 | 程式學習筆記</title><meta name="robots" content="noindex">
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
     <script>
@@ -263,7 +263,7 @@
 <p>第二種就麻煩了(偏偏我遇到的是這一種啊…)<br>因為是不同程式, process是OS開的, 這個就很難去對process做控制<br>解法就是透過Server(目前還沒找到其他解法不屬於這個的)</p>
 <p>你開一個Server, 不同process寫log會呼叫server一個API, Server端做寫入的動作<br>或是你也可以用官方文件說的, 使用SocketHandler, 但也是要建SocketServer意思一樣<br>或是你用Message queue, 那還是一樣有Server</p>
 <h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p>那Flask是如何做到logging的, 如果Gunicorn開4個worker(4 process)<br>其實也挺直覺, 因為Gunicorn本身就有一個master process, 全交由他寫入即可 </p>
-
+<!-- flag of hidden posts -->
     </div>
 
     
