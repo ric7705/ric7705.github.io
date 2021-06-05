@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="學完沒用到等於白學, 每種pattern學完用一句話來總結使用時機要注意因為強型別語言和弱型別的差異, 所以實作上的差異可能也影響到概念  python: 弱型別, 如果要按照JAVA那套來做, 反而code會很不pythonic JAVA: 強型別, 其實這種表達性不好的容易產生冗余code, 這是最需要使用DP的  Factory pattern123456789101112131415161">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python design pattern">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/python%20design%20pattern/index.html">
+<meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="學完沒用到等於白學, 每種pattern學完用一句話來總結使用時機要注意因為強型別語言和弱型別的差異, 所以實作上的差異可能也影響到概念  python: 弱型別, 如果要按照JAVA那套來做, 反而code會很不pythonic JAVA: 強型別, 其實這種表達性不好的容易產生冗余code, 這是最需要使用DP的  Factory pattern123456789101112131415161">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:51:36.268Z">
+<meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/python%20design%20pattern/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python design pattern | 程式學習筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YCWHQ5ZK46');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程式學習筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20design%20pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python design pattern
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:51:36" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>學完沒用到等於白學, 每種pattern學完用一句話來總結使用時機<br>要注意因為強型別語言和弱型別的差異, 所以實作上的差異可能也影響到概念</p>
+<ul>
+<li>python: 弱型別, 如果要按照JAVA那套來做, 反而code會很不pythonic</li>
+<li>JAVA: 強型別, 其實這種表達性不好的容易產生冗余code, 這是最需要使用DP的</li>
+</ul>
+<h2 id="Factory-pattern"><a href="#Factory-pattern" class="headerlink" title="Factory pattern"></a>Factory pattern</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Apple:</span><br><span class="line"></span><br><span class="line">    def get_color(self):</span><br><span class="line">        return &#39;red&#39;</span><br><span class="line"></span><br><span class="line">class Banana:</span><br><span class="line">    def get_color(self):</span><br><span class="line">        return &#39;yellow&#39;</span><br><span class="line"></span><br><span class="line">def get_fruit(fruit): # factory</span><br><span class="line"></span><br><span class="line">    if fruit &#x3D;&#x3D; &#39;apple&#39;:</span><br><span class="line">        return Apple()</span><br><span class="line"></span><br><span class="line">    elif fruit &#x3D;&#x3D; &#39;banana&#39;:</span><br><span class="line">        return Banana()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    fruit &#x3D; get_fruit(&#39;apple&#39;)</span><br><span class="line">    print(&#39;apple color:&#123;&#125;&#39;.format(fruit.get_color()))</span><br><span class="line"></span><br><span class="line">    fruit &#x3D; get_fruit(&#39;banana&#39;)</span><br><span class="line">    print(&#39;banana color:&#123;&#125;&#39;.format(fruit.get_color()))</span><br></pre></td></tr></table></figure>
+
+<p>工廠內通常會有一些選擇條件, 如果要精簡也可以把if/else改為使用dict</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def get_fruit(fruit):</span><br><span class="line">    all_fruits &#x3D; dict(apple&#x3D;Apple(), banana&#x3D;Banana())</span><br><span class="line">    return all_fruits[fruit]</span><br></pre></td></tr></table></figure>
+
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>根據不同的參數給不同的物件</li>
+<li>在主區塊創物件的流程, 隱藏到工廠去做</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>拿物件時期, 如果物件有相似性(例如方法一樣), 可以考慮使用工廠統一負責產出</li>
+</ul>
+</li>
+<li>一句話總結<ul>
+<li>給string, 給你相對應的物件</li>
+</ul>
+</li>
+</ul>
+<h2 id="Abstract-Factory-pattern"><a href="#Abstract-Factory-pattern" class="headerlink" title="Abstract Factory pattern"></a>Abstract Factory pattern</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>一個抽象工廠(只是interface)去掌管各個子工廠</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>子項目繁多, 一層的factory pattern無法完成時, 可以考慮把工廠給抽象化  </li>
+</ul>
+</li>
+</ul>
+<p>note: python的抽象工廠概念上比較沒有強型別語言的強, 硬要創介面code又不pythonic</p>
+<h2 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>專注在一個物件的建立過程, 一步一步build起來的情況</li>
+<li>搭配Fluent interface, 看起來就是用很多.去建立起一個物件</li>
+</ul>
+</li>
+<li>使用時機 <ul>
+<li>生產流程一樣, 但最終產品卻會不一樣時 </li>
+</ul>
+</li>
+<li>cmp factory<ul>
+<li>都是產出物件</li>
+<li>factory建構的最小單位是一個物件</li>
+<li>builder建構的最小單位可以是屬性 </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>一樣的建構流程, 但最終產品卻不一樣</li>
+</ul>
+</li>
+</ul>
+<p>note:<br>python跟JAVA的怎麼差那麼多…先跳過</p>
+<h2 id="decorator"><a href="#decorator" class="headerlink" title="decorator"></a>decorator</h2><p>注意, decorator這邊是design pattern<br>不是很多程式語法上的decorator(@)</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>成品透過裝飾, 又形成另一種成品</li>
+<li>搭配巢狀function, 看起來就是用()去裝飾成另一個物件<ul>
+<li>new_item = step2_obj(step1_obj(old_item)) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cmp bulder:<ul>
+<li>builder: 傾向於物件的組裝, 一開始沒有成品</li>
+<li>decorator: 一開始有個成品, 透過裝飾形成另一個成品 </li>
+</ul>
+</li>
+</ul>
+<h2 id="Borge"><a href="#Borge" class="headerlink" title="Borge"></a>Borge</h2><p>也稱為Monostate pattern, 類似的作法為singleton</p>
+<p>這個要直接看code觀察行為了</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>class及延伸的所有obj共享namespace</li>
+<li>修改<strong>dict</strong> pointer, 讓所有物件和這個類別共享相同mem區塊</li>
+</ul>
+</li>
+<li>使用時機<ul>
+<li>物件之間要sync狀態時     </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>所有物件和類別共享狀態 </li>
+</ul>
+</li>
+</ul>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>不直接去存取目標物件, 而是去請求代理幫你問</li>
+<li>有保護目標物件的概念</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>目標物件需保護時</li>
+<li>目標物件耗費效能時</li>
+<li>目標物件高延遲</li>
+<li>目標物件多人共享時  </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>請proxy幫你存取物件</li>
+</ul>
+</li>
+</ul>
+<h2 id="Facade"><a href="#Facade" class="headerlink" title="Facade"></a>Facade</h2><p>“這個有可能是很多人不知不覺都會用到的design pattern”<br>不要和cascade(連鎖效應)搞混</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>提供一介面讓client去存取某個子系統</li>
+</ul>
+</li>
+<li>使用時機: <ul>
+<li>如果不同類別有相同方法, 例如test, run等  </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>隱藏子系統(強型別)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Composite"><a href="#Composite" class="headerlink" title="Composite"></a>Composite</h1><p>“這個有可能是很多人不知不覺都會用到的design pattern”</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>物件還有物件</li>
+<li>物件的屬性還是物件</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>any time, 想把程式寫的結構化時</li>
+<li>要注意不要過度設計  </li>
+</ul>
+</li>
+<li>一句話總結<ul>
+<li>不需要特別知道的design pattern, 除非新手 </li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/06/python%20exception/" rel="prev" title="python exception">
+      <i class="fa fa-chevron-left"></i> python exception
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/06/python%20decorator/" rel="next" title="python decorator">
+      python decorator <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Factory-pattern"><span class="nav-number">1.</span> <span class="nav-text">Factory pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-Factory-pattern"><span class="nav-number">2.</span> <span class="nav-text">Abstract Factory pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Builder"><span class="nav-number">3.</span> <span class="nav-text">Builder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decorator"><span class="nav-number">4.</span> <span class="nav-text">decorator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Borge"><span class="nav-number">5.</span> <span class="nav-text">Borge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy"><span class="nav-number">6.</span> <span class="nav-text">Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Facade"><span class="nav-number">7.</span> <span class="nav-text">Facade</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Composite"><span class="nav-number"></span> <span class="nav-text">Composite</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ceiere</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ceiere</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

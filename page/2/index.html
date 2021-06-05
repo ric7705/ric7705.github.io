@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="程式學習筆記">
+<meta property="og:url" content="https://ric7705.github.io/tags/page/2/index.html">
+<meta property="og:site_name" content="程式學習筆記">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Ceiere">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ric7705.github.io/tags/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>程式學習筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YCWHQ5ZK46');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程式學習筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20decorator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20decorator/" class="post-title-link" itemprop="url">python decorator</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:50:34" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很強大的東西, 概念類似於micro,<br>現今很多語言也有類似概念,<br>js: middleware<br>java: annotation<br>在python, decorator主要用來修改function或class</p>
+<h2 id="demo-尚未整理"><a href="#demo-尚未整理" class="headerlink" title="demo(尚未整理)"></a>demo(尚未整理)</h2><h3 id="第一次時執行-使用class"><a href="#第一次時執行-使用class" class="headerlink" title="第一次時執行(使用class)"></a>第一次時執行(使用class)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class myDecorator(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, f):</span><br><span class="line">        print (&quot;inside myDecorator.__init__()&quot;)</span><br><span class="line">        f() # Prove that function definition has completed</span><br><span class="line"></span><br><span class="line">    def __call__(self, f):</span><br><span class="line">        f()</span><br><span class="line">        print (&quot;inside myDecorator.__call__()&quot;)</span><br><span class="line"></span><br><span class="line">@myDecorator </span><br><span class="line">def aFunction():</span><br><span class="line">    print (&quot;inside aFunction()&quot;)</span><br><span class="line"></span><br><span class="line">print (&quot;Finished decorating aFunction()&quot;)</span><br><span class="line"></span><br><span class="line">aFunction()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="呼叫時執行-使用class"><a href="#呼叫時執行-使用class" class="headerlink" title="呼叫時執行(使用class)"></a>呼叫時執行(使用class)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class entryExit(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, f):  # --2</span><br><span class="line">        self.f &#x3D; f</span><br><span class="line"></span><br><span class="line">    def __call__(self):</span><br><span class="line">        print(&quot;Entering&quot;, self.f.__name__)</span><br><span class="line">        self.f()</span><br><span class="line">        print(&quot;Exited&quot;, self.f.__name__)</span><br><span class="line"></span><br><span class="line">@entryExit  # --1</span><br><span class="line">def func1():</span><br><span class="line">    print(&quot;inside func1()&quot;)</span><br><span class="line"></span><br><span class="line">@entryExit</span><br><span class="line">def func2():</span><br><span class="line">    print(&quot;inside func2()&quot;)</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-with-param"><a href="#class-with-param" class="headerlink" title="class with param"></a>class with param</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class decoratorWithoutArguments(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, f):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        If there are no decorator arguments, the function</span><br><span class="line">        to be decorated is passed to the constructor.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print (&quot;Inside __init__()&quot;)</span><br><span class="line">        self.f &#x3D; f</span><br><span class="line"></span><br><span class="line">    def __call__(self, *args):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        The __call__ method is not called until the</span><br><span class="line">        decorated function is called.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print (&quot;Inside __call__()&quot;)</span><br><span class="line">        self.f(*args)</span><br><span class="line">        print (&quot;After self.f(*args)&quot;)</span><br><span class="line"></span><br><span class="line">@decoratorWithoutArguments</span><br><span class="line">def sayHello(a1, a2, a3, a4):</span><br><span class="line">    print (&#39;sayHello arguments:&#39;, a1, a2, a3, a4)</span><br><span class="line"></span><br><span class="line">print (&quot;After decoration&quot;)</span><br><span class="line"></span><br><span class="line">print (&quot;Preparing to call sayHello()&quot;)</span><br><span class="line">sayHello(&quot;say&quot;, &quot;hello&quot;, &quot;argument&quot;, &quot;list&quot;)</span><br><span class="line">print (&quot;After first sayHello() call&quot;)</span><br><span class="line">sayHello(&quot;a&quot;, &quot;different&quot;, &quot;set of&quot;, &quot;arguments&quot;)</span><br><span class="line">print (&quot;After second sayHello() call&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用function"><a href="#使用function" class="headerlink" title="使用function"></a>使用function</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def entryExit(f):</span><br><span class="line">    def new_f():</span><br><span class="line">        print (&quot;Entering&quot;, f.__name__)</span><br><span class="line">        f()</span><br><span class="line">        print (&quot;Exited&quot;, f.__name__)</span><br><span class="line">    return new_f</span><br><span class="line"></span><br><span class="line">@entryExit</span><br><span class="line">def func1():</span><br><span class="line">    print (&quot;inside func1()&quot;)</span><br><span class="line"></span><br><span class="line">@entryExit</span><br><span class="line">def func2():</span><br><span class="line">    print (&quot;inside func2()&quot;)</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">func2()</span><br><span class="line">print (func1.__name__)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用function帶param"><a href="#使用function帶param" class="headerlink" title="使用function帶param"></a>使用function帶param</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def pass_thru(func_to_decorate):</span><br><span class="line">    def new_func(*original_args, **original_kwargs):</span><br><span class="line"></span><br><span class="line">        print(&#39;pre-processing&#39;)</span><br><span class="line">        func_to_decorate(*original_args, **original_kwargs)</span><br><span class="line">        print(&#39;post-processing&#39;)</span><br><span class="line">    return new_func</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@pass_thru</span><br><span class="line">def print_args(*args):</span><br><span class="line">    for arg in args:</span><br><span class="line">        print(arg)</span><br><span class="line"></span><br><span class="line">print_args(1, 2, 3)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用function-decorator-with-param"><a href="#使用function-decorator-with-param" class="headerlink" title="使用function, decorator with param"></a>使用function, decorator with param</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def decorator(arg1, arg2):</span><br><span class="line"></span><br><span class="line">    def real_decorator(function):</span><br><span class="line"></span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print (&quot;Congratulations.  You decorated a function that does something with %s and %s&quot; % (arg1, arg2))</span><br><span class="line">            function(*args, **kwargs)</span><br><span class="line">        return wrapper</span><br><span class="line"></span><br><span class="line">    return real_decorator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@decorator(&quot;arg1&quot;, &quot;arg2&quot;)</span><br><span class="line">def print_args(*args):</span><br><span class="line">    for arg in args:</span><br><span class="line">        print (arg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print_args(1,2,3)</span><br></pre></td></tr></table></figure>
+
+<h3 id="decorator-with-param"><a href="#decorator-with-param" class="headerlink" title="decorator with param"></a>decorator with param</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class decoratorWithArguments(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, arg1, arg2, arg3):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        If there are decorator arguments, the function</span><br><span class="line">        to be decorated is not passed to the constructor!</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print (&quot;Inside __init__()&quot;)</span><br><span class="line">        self.arg1 &#x3D; arg1</span><br><span class="line">        self.arg2 &#x3D; arg2</span><br><span class="line">        self.arg3 &#x3D; arg3</span><br><span class="line"></span><br><span class="line">    def __call__(self, f):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        If there are decorator arguments, __call__() is only called</span><br><span class="line">        once, as part of the decoration process! You can only give</span><br><span class="line">        it a single argument, which is the function object.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print (&quot;Inside __call__()&quot;)</span><br><span class="line">        def wrapped_f(*args):</span><br><span class="line">            print (&quot;Inside wrapped_f()&quot;)</span><br><span class="line">            print (&quot;Decorator arguments:&quot;, self.arg1, self.arg2, self.arg3)</span><br><span class="line">            f(*args)</span><br><span class="line">            print (&quot;After f(*args)&quot;)</span><br><span class="line">        return wrapped_f</span><br><span class="line"></span><br><span class="line">@decoratorWithArguments(&quot;hello&quot;, &quot;world&quot;, 42)</span><br><span class="line">def sayHello(a1, a2, a3, a4):</span><br><span class="line">    print (&#39;sayHello arguments:&#39;, a1, a2, a3, a4)</span><br><span class="line"></span><br><span class="line">print (&quot;After decoration&quot;)</span><br><span class="line"></span><br><span class="line">print (&quot;Preparing to call sayHello()&quot;)</span><br><span class="line">sayHello(&quot;say&quot;, &quot;hello&quot;, &quot;argument&quot;, &quot;list&quot;)</span><br><span class="line">print (&quot;after first sayHello() call&quot;)</span><br><span class="line">sayHello(&quot;a&quot;, &quot;different&quot;, &quot;set of&quot;, &quot;arguments&quot;)</span><br><span class="line">print (&quot;after second sayHello() call&quot;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><p><a href="https://www.artima.com/weblogs/viewpost.jsp?thread=240808" target="_blank" rel="noopener">過三關</a><br><a href="http://scottlobdell.me/2015/04/decorators-arguments-python/" target="_blank" rel="noopener">可參考</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20design%20pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20design%20pattern/" class="post-title-link" itemprop="url">python design pattern</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:51:36" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>學完沒用到等於白學, 每種pattern學完用一句話來總結使用時機<br>要注意因為強型別語言和弱型別的差異, 所以實作上的差異可能也影響到概念</p>
+<ul>
+<li>python: 弱型別, 如果要按照JAVA那套來做, 反而code會很不pythonic</li>
+<li>JAVA: 強型別, 其實這種表達性不好的容易產生冗余code, 這是最需要使用DP的</li>
+</ul>
+<h2 id="Factory-pattern"><a href="#Factory-pattern" class="headerlink" title="Factory pattern"></a>Factory pattern</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Apple:</span><br><span class="line"></span><br><span class="line">    def get_color(self):</span><br><span class="line">        return &#39;red&#39;</span><br><span class="line"></span><br><span class="line">class Banana:</span><br><span class="line">    def get_color(self):</span><br><span class="line">        return &#39;yellow&#39;</span><br><span class="line"></span><br><span class="line">def get_fruit(fruit): # factory</span><br><span class="line"></span><br><span class="line">    if fruit &#x3D;&#x3D; &#39;apple&#39;:</span><br><span class="line">        return Apple()</span><br><span class="line"></span><br><span class="line">    elif fruit &#x3D;&#x3D; &#39;banana&#39;:</span><br><span class="line">        return Banana()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    fruit &#x3D; get_fruit(&#39;apple&#39;)</span><br><span class="line">    print(&#39;apple color:&#123;&#125;&#39;.format(fruit.get_color()))</span><br><span class="line"></span><br><span class="line">    fruit &#x3D; get_fruit(&#39;banana&#39;)</span><br><span class="line">    print(&#39;banana color:&#123;&#125;&#39;.format(fruit.get_color()))</span><br></pre></td></tr></table></figure>
+
+<p>工廠內通常會有一些選擇條件, 如果要精簡也可以把if/else改為使用dict</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def get_fruit(fruit):</span><br><span class="line">    all_fruits &#x3D; dict(apple&#x3D;Apple(), banana&#x3D;Banana())</span><br><span class="line">    return all_fruits[fruit]</span><br></pre></td></tr></table></figure>
+
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>根據不同的參數給不同的物件</li>
+<li>在主區塊創物件的流程, 隱藏到工廠去做</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>拿物件時期, 如果物件有相似性(例如方法一樣), 可以考慮使用工廠統一負責產出</li>
+</ul>
+</li>
+<li>一句話總結<ul>
+<li>給string, 給你相對應的物件</li>
+</ul>
+</li>
+</ul>
+<h2 id="Abstract-Factory-pattern"><a href="#Abstract-Factory-pattern" class="headerlink" title="Abstract Factory pattern"></a>Abstract Factory pattern</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>一個抽象工廠(只是interface)去掌管各個子工廠</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>子項目繁多, 一層的factory pattern無法完成時, 可以考慮把工廠給抽象化  </li>
+</ul>
+</li>
+</ul>
+<p>note: python的抽象工廠概念上比較沒有強型別語言的強, 硬要創介面code又不pythonic</p>
+<h2 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>專注在一個物件的建立過程, 一步一步build起來的情況</li>
+<li>搭配Fluent interface, 看起來就是用很多.去建立起一個物件</li>
+</ul>
+</li>
+<li>使用時機 <ul>
+<li>生產流程一樣, 但最終產品卻會不一樣時 </li>
+</ul>
+</li>
+<li>cmp factory<ul>
+<li>都是產出物件</li>
+<li>factory建構的最小單位是一個物件</li>
+<li>builder建構的最小單位可以是屬性 </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>一樣的建構流程, 但最終產品卻不一樣</li>
+</ul>
+</li>
+</ul>
+<p>note:<br>python跟JAVA的怎麼差那麼多…先跳過</p>
+<h2 id="decorator"><a href="#decorator" class="headerlink" title="decorator"></a>decorator</h2><p>注意, decorator這邊是design pattern<br>不是很多程式語法上的decorator(@)</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>成品透過裝飾, 又形成另一種成品</li>
+<li>搭配巢狀function, 看起來就是用()去裝飾成另一個物件<ul>
+<li>new_item = step2_obj(step1_obj(old_item)) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cmp bulder:<ul>
+<li>builder: 傾向於物件的組裝, 一開始沒有成品</li>
+<li>decorator: 一開始有個成品, 透過裝飾形成另一個成品 </li>
+</ul>
+</li>
+</ul>
+<h2 id="Borge"><a href="#Borge" class="headerlink" title="Borge"></a>Borge</h2><p>也稱為Monostate pattern, 類似的作法為singleton</p>
+<p>這個要直接看code觀察行為了</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>class及延伸的所有obj共享namespace</li>
+<li>修改<strong>dict</strong> pointer, 讓所有物件和這個類別共享相同mem區塊</li>
+</ul>
+</li>
+<li>使用時機<ul>
+<li>物件之間要sync狀態時     </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>所有物件和類別共享狀態 </li>
+</ul>
+</li>
+</ul>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>不直接去存取目標物件, 而是去請求代理幫你問</li>
+<li>有保護目標物件的概念</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>目標物件需保護時</li>
+<li>目標物件耗費效能時</li>
+<li>目標物件高延遲</li>
+<li>目標物件多人共享時  </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>請proxy幫你存取物件</li>
+</ul>
+</li>
+</ul>
+<h2 id="Facade"><a href="#Facade" class="headerlink" title="Facade"></a>Facade</h2><p>“這個有可能是很多人不知不覺都會用到的design pattern”<br>不要和cascade(連鎖效應)搞混</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>提供一介面讓client去存取某個子系統</li>
+</ul>
+</li>
+<li>使用時機: <ul>
+<li>如果不同類別有相同方法, 例如test, run等  </li>
+</ul>
+</li>
+<li>一句話總結:<ul>
+<li>隱藏子系統(強型別)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Composite"><a href="#Composite" class="headerlink" title="Composite"></a>Composite</h1><p>“這個有可能是很多人不知不覺都會用到的design pattern”</p>
+<p>結論</p>
+<ul>
+<li>概念:<ul>
+<li>物件還有物件</li>
+<li>物件的屬性還是物件</li>
+</ul>
+</li>
+<li>使用時機:<ul>
+<li>any time, 想把程式寫的結構化時</li>
+<li>要注意不要過度設計  </li>
+</ul>
+</li>
+<li>一句話總結<ul>
+<li>不需要特別知道的design pattern, 除非新手 </li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20exception/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20exception/" class="post-title-link" itemprop="url">python exception</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:52:13" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>一但發生例外, 通常報完錯程式就立即停止了,<br>藉由自己捕捉例外, 當程式錯誤時可以自我進行修復或重試</p>
+<h2 id="架構"><a href="#架構" class="headerlink" title="架構"></a>架構</h2><p>架構為:</p>
+<ul>
+<li>BaseException <ul>
+<li>Exception</li>
+<li>KeyboardInterrupt</li>
+<li>SystemExit       </li>
+</ul>
+</li>
+</ul>
+<p>最容易遇到的是Exception裡面的</p>
+<ul>
+<li>Exception<ul>
+<li>ArithmeticError</li>
+<li>RuntimeError</li>
+<li>TypeError</li>
+</ul>
+</li>
+</ul>
+<p>比較幾種常見用法<br>    - except:<br>        - 捕抓所有的例外(從BaseException往下)<br>    - except Exception as e:<br>        - 只捕捉Exception的(從Exception往下)<br>        - 使用as e可以順便查看錯訊<br>    - except BaseException as e:<br>        - 綜合前面兩者, 兼具查看錯訊和捕捉所有的功能   </p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    # code</span><br><span class="line">except:</span><br><span class="line">    # 運行條件: try區塊有錯時(此例是捕捉所有例外)</span><br><span class="line">else:</span><br><span class="line">    # 運行條件: try區塊無錯誤時</span><br><span class="line">finally:</span><br><span class="line">    # 運行條件: try區塊無論是否有錯都會執行</span><br></pre></td></tr></table></figure>
+
+<p>finally: 通常用在必須關閉資源才離開程式時, 例如f.close()</p>
+<h2 id="搭配loop"><a href="#搭配loop" class="headerlink" title="搭配loop"></a>搭配loop</h2><p>若是遇到程式必須執行, 遇錯須重試時, 可搭配loo使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(10):</span><br><span class="line">    try:</span><br><span class="line">        # call API</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;retry&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="拋出異常"><a href="#拋出異常" class="headerlink" title="拋出異常"></a>拋出異常</h2><p>使用raise, 有時候並不想立即處理錯誤, 而是往上拋給caller, 此時可使用raise<br>通常會在except區塊使用raise</p>
+<p>raise後面的obj 或class可省略,代表直接回傳當前的例外</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    a &#x3D; 1&#x2F;0</span><br><span class="line">except BaseException:</span><br><span class="line">    print(&#39;An exception flew by!&#39;)</span><br><span class="line">    # raise</span><br></pre></td></tr></table></figure>
+
+<p>使用raise有點像傳炸彈<br>A -&gt; B -&gt; C -&gt; D<br>如果D發生錯誤, 想要在B處理, 則<br>D捕抓到往上拋, C捕抓到往上拋, B捕抓到進行處理</p>
+<p>raise 的層級需要再研究一下, 以及使用raise的時機</p>
+<h2 id="自定義例外"><a href="#自定義例外" class="headerlink" title="自定義例外"></a>自定義例外</h2><p>開發程式時, 有時候會想把例外包裝起來, 自己做控制flow<br>實現方法只要寫個繼承可能發生錯誤的類就好了(例如Exception, BaseException等)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class MyError(Exception):  # 自定義例外</span><br><span class="line">    def __init__(self, value):</span><br><span class="line">        self.value &#x3D; value</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return repr(self.value)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    if 錯誤的情況:</span><br><span class="line">        raise MyError(2*2)</span><br><span class="line">except MyError as e:</span><br><span class="line">    print(&#39;My exception occurred, value:&#39;, e.value) # 印出4</span><br></pre></td></tr></table></figure>
+
+<p> 情況複雜時, 亦可以結構化整個自定義的例外繼承規則, 例如</p>
+<p> class Error(Exception):<br> class InputError(Error):<br> class APIError(Error):<br> 等等</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20logging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20logging/" class="post-title-link" itemprop="url">python logging</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:32:48" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="message-format"><a href="#message-format" class="headerlink" title="message format"></a>message format</h2><p>用法例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(format&#x3D;&#39;%(asctime)s (levelname)s %(message)s&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>會印出:<br>INFO 2010-12-12 11:41:42,612 this is message</p>
+<p>日期不需要ms, 可以再對日期做進一步format</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(format&#x3D;&#39;%(asctime)s&#39;, datefmt&#x3D;&#39;%m&#x2F;%d&#x2F;%Y %I:%M:%S&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="多module問題"><a href="#多module問題" class="headerlink" title="多module問題"></a>多module問題</h2><p>也就是說, A檔 -&gt; B檔 ,…</p>
+<p>A, B都有logging, 那會如何?</p>
+<p>起點(主程式設定config), 照樣宣告import logging,<br>不同的module用的import會按照相同config去寫</p>
+<p>note: 注意, 這樣你無法識別logging來自哪個module<br>解法: 下面繼續說</p>
+<h2 id="多module問題-續"><a href="#多module問題-續" class="headerlink" title="多module問題(續)"></a>多module問題(續)</h2><p>要先知道logging system有階層的存在</p>
+<p>很常看到這種用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.getLogger(__name__)</span><br></pre></td></tr></table></figure>
+
+<p>因為這根據package/module去做了分類, 去給你一個Logger<br>如果簽名相同的, 會拿到一樣的Logger object<br>怎樣才會簽名相同呢?<br>最小粒度是檔案, 也就是module,<br>所以相同檔案內就算是不同function,<br>getLogger()拿到的會是相同物件的參考<br>以上討論只是基於引述給<strong>name</strong>時的狀況, 粒度要是function,<br>可以塞<strong>name</strong>+function即可</p>
+<p>如果沒給getLogger參數, 會拿到RootLogger object, 是頂級物件</p>
+<h2 id="Logger設定"><a href="#Logger設定" class="headerlink" title="Logger設定"></a>Logger設定</h2><p>設定等級: (必須要有handler)<br>Logger.setLevel()</p>
+<p>掛上handler:<br>Logger.addHandler()</p>
+<p>增加filter:<br>Logger.addFilter()</p>
+<p>比較常用的是前面兩個, 整個logger object裝配的架構,<br>以bottom-up流程大概是這樣:</p>
+<ul>
+<li>指定msg format</li>
+<li>new Handler, 把format裝配進去</li>
+<li>get Logger Object, 把handler裝配進去</li>
+<li>設定Logger Object level</li>
+</ul>
+<h2 id="設定等級"><a href="#設定等級" class="headerlink" title="設定等級"></a>設定等級</h2><p>等級分為DEBUG, INFO, WARNING, ERROR, CRITICAL,<br>預設等級為WARNING, 意味著DEBUG, INFO不會印出</p>
+<p>簡單用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig()</span><br><span class="line">logger.setLevel(logging.DEBUG)</span><br></pre></td></tr></table></figure>
+
+<p>拿logger object用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logger&#x3D;logging.getLogger(__name__)</span><br><span class="line">logger.setLevel(logging.DEBUG)</span><br></pre></td></tr></table></figure>
+
+<p>你會發現無效, 原因是你這個logger根本沒有handler,<br>不像basicConfig他其實幫你做了很多事包含建立handler,<br>所以正確用法應該是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">logger&#x3D;logging.getLogger(__name__)</span><br><span class="line"></span><br><span class="line">streamhandler&#x3D;logging.StreamHandler()</span><br><span class="line">logger.addHandler(streamhandler)</span><br><span class="line"></span><br><span class="line">logger.setLevel(logging.DEBUG)</span><br></pre></td></tr></table></figure>
+
+<h2 id="檔案的rotate"><a href="#檔案的rotate" class="headerlink" title="檔案的rotate"></a>檔案的rotate</h2><p>logging支援兩種模式:</p>
+<ul>
+<li>RotatingFileHandler: 根據檔案大小換檔</li>
+<li>TimedRotatingFileHandler:  根據時間換檔</li>
+</ul>
+<p>RotatingFileHandler用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">handler &#x3D; RotatingFileHandler(filename, maxBytes&#x3D;20, backupCount&#x3D;5)</span><br><span class="line">logger.addHandler(handler)</span><br></pre></td></tr></table></figure>
+<p>其中, maxBytes代表檔案大小限制, backupCount是維持最新幾份</p>
+<p>假設backupCount=3, filename=app.log, 最後可能會產生以下的檔案<br>app.log, app.log.1, app.log.2, app.log.3<br>這個過程其實是以下步驟:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">write to app.log &#x2F;&#x2F; 只會往app.log寫</span><br><span class="line">if app.log full</span><br><span class="line">    mv app.log app.log.1</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;視情況做:</span><br><span class="line">    mv app.log.(n-1) app.log.(n)</span><br></pre></td></tr></table></figure>
+
+<p>TimedRotatingFileHandler用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">handler &#x3D; TimedRotatingFileHandler(filename, when&#x3D;&quot;D&quot;, interval&#x3D;1, backupCount&#x3D;5)</span><br><span class="line">logger.addHandler(handler)</span><br></pre></td></tr></table></figure>
+<p>其中when代表換檔的時間單位, 有下面這些可用:<br>‘S’: Seconds, ‘M’: Minutes, ‘H’: Hours, ‘D’: Days, Weekday, Midnight等<br>interval代表間隔, 上述例子代表1天rotate一次</p>
+<p>假設backupCount=3, filename=app.log, 一天rotate一次, 最後可能會產生以下的檔案<br>app.log, app.log.2030-01-01, app.log.2030-01-02, app.log.2030-01-03</p>
+<h2 id="完整的例子"><a href="#完整的例子" class="headerlink" title="完整的例子"></a>完整的例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">self.logger&#x3D;logging.getLogger(__name__)</span><br><span class="line">self.logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line">format&#x3D;&#39;%(asctime)s - %(levelname)s -%(name)s : %(message)s&#39;</span><br><span class="line">formatter&#x3D;logging.Formatter(format, , datefmt&#x3D;&#39;%m&#x2F;%d&#x2F;%Y %I:%M:%S&#39;)</span><br><span class="line"></span><br><span class="line">#  console log</span><br><span class="line">streamhandler&#x3D;logging.StreamHandler()</span><br><span class="line">streamhandler.setFormatter(formatter)</span><br><span class="line">streamhandler.setLevel(logging.DEBUG)</span><br><span class="line">self.logger.addHandler(streamhandler)</span><br><span class="line"></span><br><span class="line">#  file log</span><br><span class="line">logfile&#x3D;&#39;.&#x2F;&#39; + &#39;dir_or_file_name&#39; + &#39;.log&#39;</span><br><span class="line">filehandler&#x3D;logging.FileHandler(logfile)</span><br><span class="line"># or rotate</span><br><span class="line">#filehandler &#x3D; TimedRotatingFileHandler(logfile, when&#x3D;&quot;D&quot;, interval&#x3D;1, backupCount&#x3D;7)</span><br><span class="line">filehandler.setFormatter(formatter)</span><br><span class="line">streamhandler.setLevel(logging.INFO)</span><br><span class="line">self.logger.addHandler(filehandler)</span><br></pre></td></tr></table></figure>
+
+<p>注意level問題, 這邊把logger object的root log level設為DEBUG,</p>
+<p>原因是掛在上面的handler, level如果設的比預設的warn還低, 都無效, 會全部變warn等級</p>
+<h2 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h2><p>之前遇到一個情況, Main module call muduleB<br>兩個檔案都呼叫了一個class, 去產生logger object,<br>給的logger name都一樣居然會造成重複輸出的問題,</p>
+<p>查了一下發現getLogger()對於固定的名字, 本身是Singleton沒錯,<br>但addHandler不是, 所以等於掛了兩個相同的handler在logger object上</p>
+<p>解法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logger&#x3D;logging.getLogger(&#39;ProvisioningPython&#39;)</span><br><span class="line">if not len(logger.handlers):</span><br><span class="line">    ...</span><br><span class="line">    logger.addHandler(handler)</span><br><span class="line">return logger</span><br></pre></td></tr></table></figure>
+
+<p>如果是寫成自訂class, Logger是屬性成員的做法,<br>可以用這個方式(有點硬幹…)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if len(self.logger.handlers) &lt; 2:</span><br><span class="line">    streamhandler &#x3D; logging.StreamHandler()</span><br><span class="line"></span><br><span class="line">if len(self.logger.handlers) &lt; 2:</span><br><span class="line">    filehandler &#x3D; TimedRotatingFileHandler(logfile, when&#x3D;&quot;D&quot;, interval&#x3D;1, backupCount&#x3D;7)</span><br></pre></td></tr></table></figure>
+<p>因為有console, file兩個handler,<br>所以限制logger object內只能有兩個handler</p>
+<p>如果要正規一點的話, 應該要把自訂class寫成singleton</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20mutable:imputable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20mutable:imputable/" class="post-title-link" itemprop="url">python mutable/imutable</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:30:26" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>物件本身有三個元素:</p>
+<ul>
+<li>identity</li>
+<li>type: </li>
+<li>value</li>
+</ul>
+<h2 id="identity"><a href="#identity" class="headerlink" title="identity"></a>identity</h2><p>物件被建立後identity不會變, 可以想成是物件被放在mem的address</p>
+<p>可以用is來比對物件的identity, 即比較address<br>可以用id來獲得物件的identity的整數表示 </p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>跟id一樣無法改變, 可使用type來獲取obj的型態</p>
+<h2 id="value"><a href="#value" class="headerlink" title="value"></a>value</h2><p>相對於is比較mem address, 比較value可使用==<br>有些obj在建立後value是可變得稱為mutable, 若否則為immutable</p>
+<p>mutable: list, dictionary, set and user-defined classes<br>immutable: int, float, bool, str, tuple, unicode</p>
+<p>對immutable改值後, 原本的值’依然存在mem’, 只是新分配一個mem出來而已<br>有這個概念比較好理解</p>
+<p>list, tuple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list_values &#x3D; [1, 2, 3]</span><br><span class="line">set_values &#x3D; (1, 2, 3)</span><br><span class="line">print(id(list_values))</span><br><span class="line">print(id(set_values))</span><br><span class="line">#</span><br><span class="line">list_values +&#x3D; [4, 5, 6]</span><br><span class="line">set_values +&#x3D; (4, 5, 6)</span><br><span class="line">print(id(list_values))</span><br><span class="line">print(id(set_values))</span><br></pre></td></tr></table></figure>
+<p>list是mutable, 所以id不會變, 但值改變了<br>tuple是immutable, 值改變後, id也變了(重新alloc一個mem給他)</p>
+<p>int, string:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">number &#x3D; 42</span><br><span class="line">print(id(number))</span><br><span class="line"></span><br><span class="line">number &#x3D; 42</span><br><span class="line">print(id(number))</span><br><span class="line"></span><br><span class="line">number +&#x3D; 1</span><br><span class="line">print(id(number))</span><br></pre></td></tr></table></figure>
+
+<p>int, string很常用, 但其實是immutable, 對他改值一樣會重新alloc新的mem</p>
+<p>使用immutable的index時有點tricky的地方:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">a[0] &#x3D; 100</span><br></pre></td></tr></table></figure>
+<p>你以為可執行, 只是a的id改變, 其實是會噴錯訊,<br>說tuple沒有assignment operatrion<br>這點要注意一下, 其實就注意tuple即可,<br>因為immutable又有container性質的只有tuple而已</p>
+<h2 id="immutable的assign"><a href="#immutable的assign" class="headerlink" title="immutable的assign"></a>immutable的assign</h2><p>對immutable改值會觸發alloc mem, 那assign相同的值呢?<br>答案是看是否有container性質, 幸運的是同時具備contain+immutable的只有tuple</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 123</span><br><span class="line">print(id(a))</span><br><span class="line">a &#x3D; 123</span><br><span class="line">print(id(a))</span><br></pre></td></tr></table></figure>
+<p>對immutable沒container性質的obj來說, mem不變</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">print(id(a))</span><br><span class="line">a &#x3D; (1,2,3)</span><br><span class="line">print(id(a))</span><br></pre></td></tr></table></figure>
+<p>對tuple而言, 雖然內容看起來一樣, 但mem也變了</p>
+<h2 id="passing"><a href="#passing" class="headerlink" title="passing"></a>passing</h2><p>mutable/immutable在passing上有不同情況發生</p>
+<h3 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h3><p>mutable的obj, pass的話會是call by reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">values &#x3D; [4, 5, 6]</span><br><span class="line">values2 &#x3D; values</span><br><span class="line">print(id(values))</span><br><span class="line">print(id(values2))</span><br><span class="line"></span><br><span class="line">values.append(7)</span><br><span class="line">print(values is values2)</span><br><span class="line">print(values)</span><br><span class="line">print(values2)</span><br></pre></td></tr></table></figure>
+
+<p>list是mutable, assign給其他變數, 或是傳遞給function,<br>實際上都是把變數指向相同mem,<br>所以以上會印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2450343166664</span><br><span class="line">2450343166664</span><br><span class="line">True</span><br><span class="line">[4, 5, 6, 7]</span><br><span class="line">[4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
+
+<h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 0</span><br><span class="line">print(id(x))</span><br><span class="line">y &#x3D; x</span><br><span class="line">x &#x3D; 3</span><br><span class="line">print(id(x))</span><br><span class="line">print(x)</span><br><span class="line">print(id(y))</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
+
+<p>印出:<br>4397102160<br>4397102256<br>3<br>4397102160<br>0</p>
+<p>str是immutable, 傳給其他var時, 此時是指向相同mem,<br>但一但其中有人改變value後, 會重新alloc一個mem給他<br>所以帶有點lazy的概念<br>這邊要記住, 誰改值的誰就會改變mem</p>
+<h2 id="container"><a href="#container" class="headerlink" title="container"></a>container</h2><p>有些type具有container性質, 對於可否變的探討,<br>只要知道container是存id即可</p>
+<p>討論immutable container包含mutable obj的情況</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">skills &#x3D; [&quot;Programming&quot;, &quot;Machine Learning&quot;, &quot;Statistics&quot;]</span><br><span class="line">person &#x3D; (129392130, skills)</span><br><span class="line">print(id(person))</span><br><span class="line">print(person)</span><br><span class="line">skills[2] &#x3D; &quot;Maths&quot;</span><br><span class="line">print(id(person))</span><br><span class="line">print(person)</span><br></pre></td></tr></table></figure>
+
+<p>先從value來探討, tuple不可變, 但包含了可變的list<br>對list改值沒問題</p>
+<p>那id呢, list value改變id不變,<br>那tuple呢, 感覺內部值也改變了, 但其實不變,<br>對於container, 可以想像tuple是類似存這樣的東西:<br>(129392130, skills_mem_address)<br>雖然skills_mdm_address的value變了, 但因為id沒變, 所以對於tuple來說,<br>他不算改變, 所以id一樣沒變<br>(這東西會牽涉到copy(), deepcopy()議題)</p>
+<hr>
+<p>討論immutable container包含immutable obj的情況<br>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">unique_identifier &#x3D; 42</span><br><span class="line">age &#x3D; 24</span><br><span class="line">skills &#x3D; (&quot;Python&quot;, &quot;pandas&quot;, &quot;scikit-learn&quot;)</span><br><span class="line">info &#x3D; (unique_identifier, age, skills)</span><br><span class="line">print(id(unique_identifier))</span><br><span class="line">print(id(age))</span><br><span class="line">print(id(info))</span><br><span class="line">print(info)</span><br><span class="line"></span><br><span class="line">unique_identifier &#x3D; 50</span><br><span class="line">age +&#x3D; 1</span><br><span class="line">skills +&#x3D; (&quot;machine learning&quot;, &quot;deep learning&quot;)</span><br><span class="line">print(id(unique_identifier))</span><br><span class="line">print(id(age))</span><br><span class="line">print(id(info))</span><br><span class="line">print(info)</span><br></pre></td></tr></table></figure>
+<p>印出:<br>4496697744<br>4496697168<br>4504510824<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’))<br>4496698000<br>4496697200<br>4504510824<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’))<br>4504461672<br>(42, 24, (‘Python’, ‘pandas’, ‘scikit-learn’), 1, 2, 3)</p>
+<p>info是tuple, 包含三個元素, immutable int, immutable int, immutable container</p>
+<p>這三個都是immutable, 又因為對immuatble改值後, 舊有值依然存在mem,<br>且最外層info obj依然指向舊的mem, 所以info的value, id依然不變</p>
+<h2 id="效率上的考量"><a href="#效率上的考量" class="headerlink" title="效率上的考量"></a>效率上的考量</h2><ul>
+<li>immutable obj的存取速度較快</li>
+<li>但若對immutable改值會較慢, 因為必須alloc新的mem</li>
+<li>對於會改值的操作使用mutable較有效率</li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><p><a href="https://towardsdatascience.com/https-towardsdatascience-com-python-basics-mutable-vs-immutable-objects-829a0cb1530a" target="_blank" rel="noopener">https://towardsdatascience.com/https-towardsdatascience-com-python-basics-mutable-vs-immutable-objects-829a0cb1530a</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20scope/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20scope/" class="post-title-link" itemprop="url">python Scope</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:29:09" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>直接看例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 123</span><br><span class="line">b &#x3D; 456</span><br><span class="line">def fun(a):</span><br><span class="line">    print(a)</span><br><span class="line">    print(b)</span><br><span class="line">fun(4)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<p>印出:<br>4<br>456<br>123<br>local內可存取global的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b &#x3D; 456</span><br><span class="line">def fun(a):</span><br><span class="line">    b &#x3D; 123</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<p>印出:<br>456, 因為無法更改global的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">b &#x3D; 456</span><br><span class="line">def fun():</span><br><span class="line">    global b </span><br><span class="line">    b &#x3D; 123</span><br><span class="line"></span><br><span class="line">fun()</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<p>印出:<br>123, 使用global可以更改值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 0</span><br><span class="line">def fun(): </span><br><span class="line">    a &#x3D; 7</span><br><span class="line">    print(a) </span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
+<p>印出7, a此時是local var</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 0</span><br><span class="line">def fun(): </span><br><span class="line">    print(a)</span><br><span class="line">    a &#x3D; 7</span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
+<p>只是把兩行對調就噴錯訊, 為何第一個print不會印出global的a?<br>原因是在function在一行一行執行code前會先掃var,<br>知道有對a assign值後認定a是local var,<br>然而在第一行看到你要對未定義的a做print, 就噴錯了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def t():</span><br><span class="line">    a &#x3D; 123</span><br><span class="line">t()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p>印出not defined, 因為a是local</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def t():</span><br><span class="line">    global a</span><br><span class="line">    a &#x3D; 123</span><br><span class="line">t()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p>印出123, 使用global後, a被提升到global, 就算沒在外部去宣告</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def make_handler():</span><br><span class="line">    number &#x3D; 0</span><br><span class="line">    def handler():</span><br><span class="line">        nonlocal number</span><br><span class="line">        number +&#x3D; 1</span><br><span class="line">        print(f&#39;&#123;number&#125;&#39;)</span><br><span class="line">    return handler</span><br><span class="line">handler &#x3D; make_handler()</span><br><span class="line">handler() </span><br><span class="line">handler()</span><br></pre></td></tr></table></figure>
+<p>印出1,2, nonlocal可以存取非global, 也非local的, 那就是存取外層local var</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def custom_append(data, source&#x3D;[]):</span><br><span class="line">    source.append(data)</span><br><span class="line">    print(f&#39;ans: &#123;source&#125;&#39;)</span><br><span class="line">custom_append(4) </span><br><span class="line">custom_append(5)</span><br></pre></td></tr></table></figure>
+<p>印出[4], [4,5], list是mutable, 所以只維護一份</p>
+<p>接下來三題要掌握一個原則:<br>value是根據function建立時期綁定, 還是呼叫時期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i &#x3D; &quot;original&quot;</span><br><span class="line">def print_i1():</span><br><span class="line">    print(i) </span><br><span class="line"></span><br><span class="line">def print_i2(s&#x3D;i): </span><br><span class="line">    print(s) </span><br><span class="line">i &#x3D; &quot;changed&quot;</span><br><span class="line">print_i1()</span><br><span class="line">print_i2()</span><br></pre></td></tr></table></figure>
+<p>印出changed, original 我的天…</p>
+<p>第一個印changed, 原因是呼叫時的值, 已經被綁到changed<br>第二個印original的原因是,<br>function可以簡單想成兩步驟: 建立, 被呼叫<br>而function parameter default value在建立function時就會綁定值<br>程式從上而下執行, 所以s綁定了original</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">def print_i1(k):</span><br><span class="line">    print(a+k) </span><br><span class="line">    </span><br><span class="line">a &#x3D; 2</span><br><span class="line">def print_i2(k): </span><br><span class="line">    print(a+k) </span><br><span class="line"></span><br><span class="line">print_i1(10)</span><br><span class="line">print_i2(10)</span><br></pre></td></tr></table></figure>
+<p>印出12, 12<br>原因是a值在呼叫時綁定, 等到呼叫時a是2<br>所以印出12, 12</p>
+<p>改成lambda版本如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">fun1 &#x3D; lambda b: a + b</span><br><span class="line">a &#x3D; 2</span><br><span class="line">fun2 &#x3D; lambda b: a + b</span><br><span class="line">print(fun1(10)) </span><br><span class="line">print(fun2(10))</span><br></pre></td></tr></table></figure>
+<p>一樣印出12, 12</p>
+<p><a href="https://stackoverflow.com/questions/21053988/lambda-function-acessing-outside-variable" target="_blank" rel="noopener">REF</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%20selenium/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%20selenium/" class="post-title-link" itemprop="url">pythonSelenium</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:47:54" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><ul>
+<li>test</li>
+<li>script爬蟲無法達成時的替代方案</li>
+</ul>
+<h2 id="driver安裝"><a href="#driver安裝" class="headerlink" title="driver安裝"></a>driver安裝</h2><p>須先安裝browser的driver<br>例如<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">firefox</a><br>解壓後是執行檔, 放到/usr/local/bin下</p>
+<p>note: mac也可透過homebrew安裝(如果要headless, 就不建議了, brew版本太舊)</p>
+<h2 id="基本架構"><a href="#基本架構" class="headerlink" title="基本架構"></a>基本架構</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">driver &#x3D; webdriver.Firefox()            # init</span><br><span class="line">driver.get(&quot;http:&#x2F;&#x2F;www.python.org&quot;)     # go to the page</span><br><span class="line">elem &#x3D; driver.find_element_by_name(&quot;q&quot;) # 定位element(此處為input box)</span><br><span class="line">elem.clear()                            # 清除element內容(此處為palceholder)</span><br><span class="line">elem.send_keys(&quot;pycon&quot;)                 # 模擬鍵盤輸入</span><br><span class="line">elem.send_keys(Keys.RETURN)             # 透過Keys類別, 模擬鍵盤輸入</span><br><span class="line">driver.close()                          # 關閉</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用的操作"><a href="#常用的操作" class="headerlink" title="常用的操作"></a>常用的操作</h2><ul>
+<li>driver.page_source: 獲取原始碼<ul>
+<li>頁面內容有變動會同時更新, 但須注意延遲問題<ul>
+<li>固定等待時間<ul>
+<li>使用time.sleep()</li>
+<li>driver.implicitly_wait(10)</li>
+</ul>
+</li>
+<li>使用WebDriverWait (較推薦)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模擬鍵盤輸入<ul>
+<li>send_keys(‘字串’): 輸入字串</li>
+<li>send_keys(Keys.XXX): 輸入功能鍵</li>
+</ul>
+</li>
+<li>element定位<ul>
+<li>find_element_by_name(‘name’): by name</li>
+<li>find_element_by_id(‘id’): by id</li>
+<li>find_element_by_xpath(‘xpath’): by xpath<ul>
+<li>這個有點作弊, 對於爛結構的web, 配合chrome的開發工具可以直接獲得xpath </li>
+</ul>
+</li>
+<li>其他: 直接去看webelement.py, 有非常多function</li>
+</ul>
+</li>
+<li>截圖<ul>
+<li>get_screenshot_as_file(‘screenshot.png’)</li>
+</ul>
+</li>
+</ul>
+<h2 id="element定位範例"><a href="#element定位範例" class="headerlink" title="element定位範例"></a>element定位範例</h2><p>這個element</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;passwd&quot; id&#x3D;&quot;passwd-id&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可透過以下方法定位(注意xpath用法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element &#x3D; driver.find_element_by_id(&quot;passwd-id&quot;)</span><br><span class="line">element &#x3D; driver.find_element_by_name(&quot;passwd&quot;)</span><br><span class="line">element &#x3D; driver.find_element_by_xpath(&quot;&#x2F;&#x2F;input[@id&#x3D;&#39;passwd-id&#39;]&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="wait-操作"><a href="#wait-操作" class="headerlink" title="wait 操作"></a>wait 操作</h2><p>概念是wait until condition meet<br>可避免寫死等待時間</p>
+<p>用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from selenium.webdriver.support.wait import WebDriverWait</span><br><span class="line">from selenium.webdriver.support import expected_conditions as EC</span><br><span class="line">from selenium.webdriver.common.by import By</span><br><span class="line"></span><br><span class="line">browser &#x3D; webdriver.Firefox()</span><br><span class="line">browser.get(&quot;url&quot;)</span><br><span class="line">delay &#x3D; 3 # seconds</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    myElem &#x3D; WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.ID, &#39;IdOfMyElement&#39;)))</span><br><span class="line">    print &quot;Page is ready!&quot;</span><br><span class="line">except TimeoutException:</span><br><span class="line">    print &quot;Loading took too much time!&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>EC內有很多方便的判斷方法<ul>
+<li>presence_of_element_located: 當element出現時</li>
+<li>presence_of_all_elements_located: 當element都載入時</li>
+<li>alert_is_present: 當顯示alert時</li>
+<li>other: 直接看源碼</li>
+</ul>
+</li>
+<li>By類別決定要使用哪個來識別<ul>
+<li>ID, NAME, CLASS_NAME 等 </li>
+</ul>
+</li>
+</ul>
+<h2 id="access-cookie"><a href="#access-cookie" class="headerlink" title="access cookie"></a>access cookie</h2><ul>
+<li>設定cookie(一次只能設一對key/pair)<ul>
+<li>cookie = {‘name’ : ‘foo’, ‘value’ : ‘bar’}</li>
+<li>driver.add_cookie(cookie)</li>
+</ul>
+</li>
+<li>取得所有cookie<ul>
+<li>driver.get_cookies()</li>
+</ul>
+</li>
+<li>情境: 表單登入<ul>
+<li>登入第一次後可以把cookie內的token 記到local端, 往後的操作就不會需要重複登入</li>
+</ul>
+</li>
+</ul>
+<h2 id="generate-script"><a href="#generate-script" class="headerlink" title="generate script"></a>generate script</h2><p>很多方式, 這邊使用Katalon Recorder(firefox, chrome皆有此plugin)<br><a href="https://morvanzhou.github.io/tutorials/data-manipulation/scraping/5-01-selenium/" target="_blank" rel="noopener">Ref</a></p>
+<h2 id="背景執行-英文叫headless"><a href="#背景執行-英文叫headless" class="headerlink" title="背景執行(英文叫headless)"></a>背景執行(英文叫headless)</h2><p>要達成headless有兩種方法</p>
+<ul>
+<li>PhantomJS</li>
+<li>原生瀏覽器支援</li>
+</ul>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><p>通常要編寫headless script, 會搭配PhantomJS使用<br>但維護者說…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I think people will switch to it, eventually. Chrome is faster and more stable than PhantomJS. And it doesn’t eat memory like crazy.</span><br><span class="line"></span><br><span class="line">I don’t see any future in developing PhantomJS. Developing PhantomJS 2 and 2.5 as a single developer is a bloody hell. Even with recently released 2.5 Beta version with new and shiny QtWebKit, I can’t physically support all 3 platforms at once (I even bought the Mac for that!). We have no support. From now, I am stepping down as maintainer. If someone wants to continue - feel free to reach me.</span><br></pre></td></tr></table></figure>
+
+<h3 id="原生瀏覽器支援"><a href="#原生瀏覽器支援" class="headerlink" title="原生瀏覽器支援"></a>原生瀏覽器支援</h3><ul>
+<li>需求<ul>
+<li>chrome ver. &gt; 59可支援headless執行, ChromeDriver 版本&gt;2.33 就可以了</li>
+<li>Selenium &gt;= v3.6.0</li>
+</ul>
+</li>
+</ul>
+<p>firefox:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#x3D; Options()</span><br><span class="line">options.add_argument(&quot;--headless&quot;)</span><br><span class="line">driver &#x3D; webdriver.Firefox(firefox_options&#x3D;options)</span><br></pre></td></tr></table></figure>
+
+<p>chrome:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#x3D; webdriver.ChromeOptions()</span><br><span class="line">options.add_argument(&#39;headless&#39;)</span><br><span class="line">driver &#x3D; webdriver.Chrome(chrome_options&#x3D;options)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://intoli.com/blog/running-selenium-with-headless-chrome/" target="_blank" rel="noopener">Ref</a></p>
+<h2 id="remote-webdriver"><a href="#remote-webdriver" class="headerlink" title="remote webdriver"></a>remote webdriver</h2><p>概念是driver跑在本機的地方, 但selenium行為是從local端給的</p>
+<p>只有一開始init時不一樣</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver &#x3D; webdriver.Remote(command_executor&#x3D;&#39;http:&#x2F;&#x2F;127.0.0.1:4444&#x2F;wd&#x2F;hub&#39;, desired_capabilities&#x3D;c)</span><br><span class="line">### 其餘對driver的操作, 等同於指揮remote server上的browser driver做操作</span><br></pre></td></tr></table></figure>
+
+
+<p>可參考<a href="https://wangxiwei.gitbooks.io/webdriver-python/content/31/remote.html" target="_blank" rel="noopener">這篇</a></p>
+<h2 id="遇到要auth的頁面"><a href="#遇到要auth的頁面" class="headerlink" title="遇到要auth的頁面"></a>遇到要auth的頁面</h2><p>沒防機器人的帳密登入: 模擬login收送表單, 維護cookie<br>有防機器人:</p>
+<ul>
+<li>captcha: 用程式的方法去解析</li>
+<li>2FA: GG..</li>
+</ul>
+<p>最後的下下策是使用 手動登入+selenium<br>概念是, selenium開跑時wait, 輸入帳密, 驗證2FA啥的直到成功登入時<br>selenium偵測到出現某個element, 繼續執行</p>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul>
+<li>注意頁面載入完整度, 像官網例子就跑出非預期行為了, search條件為not found, 但沒出現assertion exception, 原因是driver.page_source 來不及更新, 使用想辦法wait一下即可解決</li>
+<li>幾乎所有的操作都隨手可得, 重點應該是在於找流程, 和注意步驟間的wait處理</li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><p><a href="https://selenium-python.readthedocs.io/locating-elements.html" target="_blank" rel="noopener">https://selenium-python.readthedocs.io/locating-elements.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python-import/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python-import/" class="post-title-link" itemprop="url">python import常見問題</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:17:29" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="No-module-named-‘main-xx’-‘main‘-is-not-a-package"><a href="#No-module-named-‘main-xx’-‘main‘-is-not-a-package" class="headerlink" title="No module named ‘main.xx’; ‘main‘ is not a package"></a>No module named ‘<strong>main</strong>.xx’; ‘<strong>main</strong>‘ is not a package</h2><p>這原因是, 你試圖執行一個包含使用relative import的pt檔, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from . import b</span><br></pre></td></tr></table></figure>
+<p>執行python a.py就會爆這個錯,<br>原因在於”使用relative import的檔案只能被引用, 不能直接執行”,<br>因為如果直接執行, name就會是main了,<br>而python的relative系統的定位是根據name去推算的</p>
+<p>如果是其他人引用a例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import a</span><br></pre></td></tr></table></figure>
+<p>此時對於outer來說name是main, 但對於引用的a來說,<br>a的import那行的.代表的是該module name, 也就是name=a</p>
+<p>解法: 確保主要執行檔(執行入口)沒有使用到relative import,<br>有的話改為全部使用absolute import</p>
+<h2 id="attempted-relative-import-beyond-top-level-package"><a href="#attempted-relative-import-beyond-top-level-package" class="headerlink" title="attempted relative import beyond top-level package"></a>attempted relative import beyond top-level package</h2><p>python的資料夾有分一般資料夾(folder)和套件(package),<br>普通的folder要被視為package要滿足兩個條件:</p>
+<ul>
+<li>必須包含<strong>init</strong>檔案</li>
+<li>不能是執行入口</li>
+</ul>
+<p>這邊接下來要說什麼是top-level, 如何定義,<br>會踩到這個錯誤代表你以為的top-level跟python interpretor認知的不同</p>
+<p>在main.py檔案執行import時,<br>可能會是from package1.sub_package import module1</p>
+<p>這時候對於module1來說, 他的name是package.sub_package.module1,<br>name的第一個是啥, 就是該module的top level!!!<br>因為top level是package, 所以只要你relative是在package下都可正常運行</p>
+<p>如果relative使用在package之外, 那就會吃這個錯誤, 因為已經超過該module的top level</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python2,3%E5%85%B1%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python2,3%E5%85%B1%E5%AD%98/" class="post-title-link" itemprop="url">python2, 3共存</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:46:05" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>這個對於mac來說, 光是怎麼讓python2,3共存就是一個大門檻了<br>其實追根究柢是考驗對於unix-like系統, link, 以及path查找的觀念有關</p>
+<h2 id="安裝python3"><a href="#安裝python3" class="headerlink" title="安裝python3"></a>安裝python3</h2><p>mac預設安裝了python2, 位置是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;python</span><br></pre></td></tr></table></figure>
+
+<p>mac的話為了方便以後的管理, 透過homebrew來安裝,<br>可以發現, homebrew把python安裝到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;bin&#x2F;python3</span><br></pre></td></tr></table></figure>
+
+
+<p>因為環境每個人都不同, 有可能python裝了又刪, 甚至mac內建的python也給更動了<br>有人是mac乾淨的環境, 所以可以在stackoverflow發現, 這問題百百解</p>
+<p>安裝完後, 依照邏輯去check</p>
+<p>輸入以下指令去check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python, python3, pip, pip3, </span><br><span class="line">which pip, which pip3</span><br><span class="line">type python, type python3</span><br></pre></td></tr></table></figure>
+
+<p>這時候應該知道你打的指令到底是去連到哪個檔案</p>
+<p>這時候依照個人目的, mac上可以透過修改.bash_profile</p>
+<p>例如我根本用不到python2, 我想要系統預設使用python3</p>
+<p>可以加入這兩行(每此更動.bash_profil後要source才可生效, cli也要重啟)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set mac default python version is python3(from homebrew pachage)</span><br><span class="line">alias python&#x3D;&#39;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;python3&#39;</span><br><span class="line"></span><br><span class="line"># mac default python 2</span><br><span class="line">lias python2&#x3D;&#39;&#x2F;usr&#x2F;bin&#x2F;python&#39;</span><br></pre></td></tr></table></figure>
+
+<p>以上設定完輸入以下指令會對應到不同檔案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python, python3 &#x3D;&gt; 指到python3</span><br><span class="line">python2         &#x3D;&gt; 指到mac內建的python2</span><br></pre></td></tr></table></figure>
+
+<p>這時問題來了, 輸入which python, 他還是顯示python2的path<br>這個我就不追究了, 反正之後都是透過virtualenv來管理專案<br>但是起碼需確定使用type要是對的</p>
+<p>再來check pip</p>
+<p>輸入pip3 -V後顯示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip 18.0 from &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip (python 3.7)</span><br></pre></td></tr></table></figure>
+
+<p>輸入pip -V後顯示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: &#x2F;usr&#x2F;local&#x2F;bin&#x2F;pip: &#x2F;usr&#x2F;local&#x2F;opt&#x2F;python3&#x2F;bin&#x2F;python3.5: bad interpreter: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>原因是因為輸入pip是link到/usr/local/bin/pip, 這個又link到/usr/local/opt/python3/bin/python3.5</p>
+<p>python3.5不見了是因為我使用homebrew把python3砍了, 但是為啥這個link沒一起幫我砍掉..</p>
+<p>不然就是之前我透過stackoverflow下了一些指令把它手動link了</p>
+<p>無論如何, 我希望輸入pip, 就是去執行pip3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink &#x2F;usr&#x2F;local&#x2F;bin&#x2F;pip</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;bin&#x2F;pip版號 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;pip</span><br></pre></td></tr></table></figure>
+
+<p>virtualenv注意<br>雖然設定了python是去執行python3, 可是在virtualenv時他可不麼認為</p>
+<p>還是得指定版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv -p python3 .env3</span><br></pre></td></tr></table></figure>
+
+
+<p>source後pip list是正確的, 但是package仍然沒裝進去</p>
+<p>最後是把.bash_profile有關python的設定都刪掉就正常….</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/python%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/06/python%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">python套件管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:42:39" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a>pyenv</h2><p>python在mac上跟mysql一樣蛋疼</p>
+<p>mac偶然升級到3.7, 但是server只能到3.5.2<br>之後mac想降版到3.5, 整個系統壞掉<br>哀…<br>決定使用pyenv 搭配 pyenv-virtualenv 來解決</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跟單純使用virtualenv不同,<br>每個開發資料夾不會有.env了,<br>而是放在系統某個位置集中管理</p>
+<p>例如crypto_server專案, 使用pyenv-virtual 創建一個對於該專案的環境<br>激活並安裝套件, 執行</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>使用homebrew安裝:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install pyenv</span><br><span class="line">brew install pyenv-virtualenv</span><br></pre></td></tr></table></figure>
+
+<p>設定env, 下面貼到/bash_profle 內</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PATH&#x3D;&quot;$HOME&#x2F;.pyenv&#x2F;bin:$PATH&quot;</span><br><span class="line">eval &quot;$(pyenv init -)&quot;</span><br><span class="line">eval &quot;$(pyenv virtualenv-init -)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="pycharm"><a href="#pycharm" class="headerlink" title="pycharm"></a>pycharm</h2><p>add local之後在以下目錄選擇對應的env</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.pyenv&#x2F;versions</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="跟python版本相關的"><a href="#跟python版本相關的" class="headerlink" title="跟python版本相關的"></a>跟python版本相關的</h3><p>查詢已安裝Python所有版本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
+
+<p>查詢當前使用的Python版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
+
+<p>設置全局python版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<p>設置當前所在目錄的python版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv local &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<p>查詢python可安裝版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install -l</span><br></pre></td></tr></table></figure>
+
+<p>安裝python特定版本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.4.3</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><p>創建某個Python版本的虛擬環境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv virtualenv &lt;version&gt; &lt;folder_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>切換虛擬環境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv activate &lt;folder_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>退出虛擬環境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv deactivate</span><br></pre></td></tr></table></figure>
+
+<p>列出當前所有的虛擬環境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv virtualenvs</span><br></pre></td></tr></table></figure>
+
+<p>刪除虛擬環境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv virtualenv-delete &lt;folder_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ubuntu上的安裝"><a href="#ubuntu上的安裝" class="headerlink" title="ubuntu上的安裝"></a>ubuntu上的安裝</h2><p>需要先安裝build python需要的套件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python-openssl git</span><br></pre></td></tr></table></figure>
+
+<p>執行這行安裝pyenv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https:&#x2F;&#x2F;pyenv.run | bash</span><br></pre></td></tr></table></figure>
+
+<p>在~/.bashrc 增加以下三行把pyenv加到path</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&quot;&#x2F;root&#x2F;.pyenv&#x2F;bin:$PATH&quot;</span><br><span class="line">eval &quot;$(pyenv init -)&quot;</span><br><span class="line">eval &quot;$(pyenv virtualenv-init -)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>source ~/.bashrc後, 搞定</p>
+<p>再搞不定, 重登一定可以了</p>
+<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>後來發現python後續提供了內建的.venv, 後來新開的專案都用這個了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ceiere</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ceiere</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ric7705.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="項目結構可以創一個app.py, 把flask物件訂在global, 但是專案較沒結構 專案結構範例: 12345678910111213141516171819202122232425262728&#x2F;home&#x2F;user&#x2F;Projects&#x2F;flask-tutorial├── flaskr&#x2F;│   ├── __init__.py│   ├── db.p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask目錄結構">
+<meta property="og:url" content="https://ric7705.github.io/tags/2021/06/06/flask%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B/index.html">
+<meta property="og:site_name" content="程式學習筆記">
+<meta property="og:description" content="項目結構可以創一個app.py, 把flask物件訂在global, 但是專案較沒結構 專案結構範例: 12345678910111213141516171819202122232425262728&#x2F;home&#x2F;user&#x2F;Projects&#x2F;flask-tutorial├── flaskr&#x2F;│   ├── __init__.py│   ├── db.p">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-06-05T18:13:52.000Z">
+<meta property="article:modified_time" content="2021-06-05T18:43:37.097Z">
+<meta property="article:author" content="Ceiere">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="工作筆記">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ric7705.github.io/tags/2021/06/06/flask%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>flask目錄結構 | 程式學習筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCWHQ5ZK46"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YCWHQ5ZK46');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程式學習筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ric7705.github.io/tags/2021/06/06/flask%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ceiere">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程式學習筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          flask目錄結構
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-06-06 02:13:52 / 修改時間：02:43:37" itemprop="dateCreated datePublished" datetime="2021-06-06T02:13:52+08:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ceiere-hide/" itemprop="url" rel="index"><span itemprop="name">ceiere_hide</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="項目結構"><a href="#項目結構" class="headerlink" title="項目結構"></a>項目結構</h2><p>可以創一個app.py, 把flask物件訂在global, 但是專案較沒結構</p>
+<p>專案結構範例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;user&#x2F;Projects&#x2F;flask-tutorial</span><br><span class="line">├── flaskr&#x2F;</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── db.py</span><br><span class="line">│   ├── schema.sql</span><br><span class="line">│   ├── auth.py</span><br><span class="line">│   ├── blog.py</span><br><span class="line">│   ├── templates&#x2F;</span><br><span class="line">│   │   ├── base.html</span><br><span class="line">│   │   ├── auth&#x2F;</span><br><span class="line">│   │   │   ├── login.html</span><br><span class="line">│   │   │   └── register.html</span><br><span class="line">│   │   └── blog&#x2F;</span><br><span class="line">│   │       ├── create.html</span><br><span class="line">│   │       ├── index.html</span><br><span class="line">│   │       └── update.html</span><br><span class="line">│   └── static&#x2F;</span><br><span class="line">│       └── style.css</span><br><span class="line">├── tests&#x2F;</span><br><span class="line">│   ├── conftest.py</span><br><span class="line">│   ├── data.sql</span><br><span class="line">│   ├── test_factory.py</span><br><span class="line">│   ├── test_db.py</span><br><span class="line">│   ├── test_auth.py</span><br><span class="line">│   └── test_blog.py</span><br><span class="line">├── venv&#x2F;</span><br><span class="line">├── setup.py</span><br><span class="line">└── MANIFEST.in</span><br></pre></td></tr></table></figure>
+
+<p>此時Flask()要在<strong>init</strong>.py創建, 使用官方提供的application factory</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def create_app(test_config&#x3D;None): # 名字不可改</span><br><span class="line">    # create and configure the app</span><br><span class="line">    app &#x3D; Flask(__name__, instance_relative_config&#x3D;True)</span><br><span class="line">    # 其餘設定, 例如讀config, 註冊blueprint, 讀取key等等</span><br><span class="line">    return app</span><br></pre></td></tr></table></figure>
+<p>這時候要export該app的資料夾</p>
+<p>export FLASK_APP=flaskr,<br>執行flask run後, 會自動去執行名為create_app的function</p>
+<h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><p>開啟debug模式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_ENV&#x3D;development</span><br></pre></td></tr></table></figure>
+<ul>
+<li>it activates the debugger</li>
+<li>it activates the automatic reloader</li>
+<li>it enables the debug mode on the Flask application.</li>
+</ul>
+<p>選擇執行目的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP&#x3D;資料夾或app.py</span><br></pre></td></tr></table></figure>
+
+<p>執行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flask run</span><br></pre></td></tr></table></figure>
+
+<h2 id="router"><a href="#router" class="headerlink" title="router"></a>router</h2><p>範例:</p>
+<ul>
+<li>@app.route(‘/‘)</li>
+<li>@app.route(‘/user/<username>‘): url param用&lt;&gt;<ul>
+<li>被裝飾的func要指名參數username</li>
+<li>或使用request, request.args.get(‘key’, ‘’)</li>
+</ul>
+</li>
+<li>@app.route(‘/post/<a href="int:post_id">int:post_id</a>‘): 順便轉型<ul>
+<li>float, int, string</li>
+</ul>
+</li>
+<li>@app.route(‘/login’, methods=[‘GET’, ‘POST’]): 指名http method<ul>
+<li>func內搭配request.method使用   </li>
+</ul>
+</li>
+</ul>
+<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><ul>
+<li>“string”: 回傳字串</li>
+<li>redirect(url_for(‘login’)): redirect<ul>
+<li>搭配url_for(): 轉一個url給你 </li>
+</ul>
+</li>
+<li>render_template(‘hello.html’, name=name):使用template</li>
+<li>abort(401): 終止接下來的動作, 順便拋http code</li>
+<li>jsonify(): return json</li>
+</ul>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul>
+<li>request.cookies.get(‘username’): 取cookie</li>
+<li>resp.set_cookie(‘username’, ‘the username’): 存cookie</li>
+</ul>
+<h2 id="log"><a href="#log" class="headerlink" title="log"></a>log</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.logger.debug(&#39;A value for debugging&#39;)</span><br><span class="line">app.logger.warning(&#39;A warning occurred (%d apples)&#39;, 42)</span><br><span class="line">app.logger.error(&#39;An error occurred&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="http-code"><a href="#http-code" class="headerlink" title="http code"></a>http code</h2><p>除了使用abort(401)之外, 也可以自訂, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.errorhandler(404)</span><br><span class="line">def page_not_found(error):</span><br><span class="line">    return render_template(&#39;page_not_found.html&#39;), 404</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="讓整個專案可安裝"><a href="#讓整個專案可安裝" class="headerlink" title="讓整個專案可安裝"></a>讓整個專案可安裝</h2><p>setup.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from setuptools import find_packages, setup</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name&#x3D;&#39;flaskr&#39;, #專案名</span><br><span class="line">    version&#x3D;&#39;1.0.0&#39;,</span><br><span class="line">    packages&#x3D;find_packages(), # 自動要打包的目錄</span><br><span class="line">    include_package_data&#x3D;True,</span><br><span class="line">    zip_safe&#x3D;False,</span><br><span class="line">    install_requires&#x3D;[</span><br><span class="line">        &#39;flask&#39;,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>find_package遺漏的部分要手動定義打包進來</p>
+<p>MANIFEST.in</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">include flaskr&#x2F;schema.sql</span><br><span class="line">graft flaskr&#x2F;static</span><br><span class="line">graft flaskr&#x2F;templates</span><br><span class="line">global-exclude *.pyc  #排除.pyc檔</span><br></pre></td></tr></table></figure>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>可分為</p>
+<ul>
+<li>系統預設的</li>
+<li>自訂</li>
+</ul>
+<h3 id="系統設定"><a href="#系統設定" class="headerlink" title="系統設定"></a>系統設定</h3><p>系統預設的需在執行前使用export</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LFASK_ENV&#x3D;development  # 預設為production.</span><br></pre></td></tr></table></figure>
+<p>dev模式, 程式更改會自動重啟. /頁面會顯示錯訊</p>
+<h3 id="自訂config"><a href="#自訂config" class="headerlink" title="自訂config"></a>自訂config</h3><p>有兩種方式匯入python檔案:</p>
+<ul>
+<li>app.config.from_object()<ul>
+<li>檔案內部放class, 可參考官網範例</li>
+</ul>
+</li>
+<li>app.config.from_pyfile()<ul>
+<li>檔案內部放key=value, key須為大寫否則出錯</li>
+</ul>
+</li>
+</ul>
+<h2 id="extension"><a href="#extension" class="headerlink" title="extension"></a>extension</h2><p>簡直什麼應用都有….<br><a href="http://flask.pocoo.org/extensions/" target="_blank" rel="noopener">http://flask.pocoo.org/extensions/</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag"># 工作筆記</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/06/package,%20module,%20import/" rel="prev" title="package, module, import">
+      <i class="fa fa-chevron-left"></i> package, module, import
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/06/effective%20python2/" rel="next" title="effective python- 2. Function">
+      effective python- 2. Function <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#項目結構"><span class="nav-number">1.</span> <span class="nav-text">項目結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">2.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#router"><span class="nav-number">3.</span> <span class="nav-text">router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return"><span class="nav-number">4.</span> <span class="nav-text">return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">5.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-number">6.</span> <span class="nav-text">log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-code"><span class="nav-number">7.</span> <span class="nav-text">http code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讓整個專案可安裝"><span class="nav-number">8.</span> <span class="nav-text">讓整個專案可安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">9.</span> <span class="nav-text">config</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系統設定"><span class="nav-number">9.1.</span> <span class="nav-text">系統設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自訂config"><span class="nav-number">9.2.</span> <span class="nav-text">自訂config</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension"><span class="nav-number">10.</span> <span class="nav-text">extension</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ceiere</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ceiere</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
