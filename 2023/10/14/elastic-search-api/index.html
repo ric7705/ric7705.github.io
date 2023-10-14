@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Elastic Search Api | 筆記</title>
+  <meta name="description" content="工作上遇到一個情境, 我需要寫scheduler定期去call ES API, 並persist到postgres上,資料大概10分鐘筆數會有12000上下, 所以必須使用pagination來解決 Elastic search 提供API可對資料進行修改查詢等功能,由於我使用python, 所以直接使用elasticsearch套件來call API,安裝: 1pip install elast">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elastic Search Api">
+<meta property="og:url" content="http://example.com/2023/10/14/elastic-search-api/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="工作上遇到一個情境, 我需要寫scheduler定期去call ES API, 並persist到postgres上,資料大概10分鐘筆數會有12000上下, 所以必須使用pagination來解決 Elastic search 提供API可對資料進行修改查詢等功能,由於我使用python, 所以直接使用elasticsearch套件來call API,安裝: 1pip install elast">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-14T15:16:51.000Z">
+<meta property="article:modified_time" content="2023-10-14T15:20:00.999Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Elastic Search">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/10/14/elastic-search-api/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ric7705" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">工作筆記</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Taipei, Taiwan</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Survey/">Survey</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%AC%E8%A9%A6/">測試</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%9B%89/" rel="tag">哈囉</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%8E%E5%B8%82/" rel="tag">城市</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Elastic-Search/" style="font-size: 13px;">Elastic Search</a> <a href="/tags/%E5%93%88%E5%9B%89/" style="font-size: 13px;">哈囉</a> <a href="/tags/%E5%9F%8E%E5%B8%82/" style="font-size: 13px;">城市</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Survey/">Survey</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/10/14/elastic-search-api/" class="title">Elastic Search Api</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-10-14T15:16:51.000Z" itemprop="datePublished">2023-10-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B8%AC%E8%A9%A6/">測試</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/10/14/test/" class="title">test</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-10-14T13:57:22.000Z" itemprop="datePublished">2023-10-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/10/14/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-10-14T13:08:17.593Z" itemprop="datePublished">2023-10-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-elastic-search-api" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Elastic Search Api
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/10/14/elastic-search-api/" class="article-date">
+	  <time datetime="2023-10-14T15:16:51.000Z" itemprop="datePublished">2023-10-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Survey/">Survey</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/10/14/elastic-search-api/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>工作上遇到一個情境, 我需要寫scheduler定期去call ES API, 並persist到postgres上,<br>資料大概10分鐘筆數會有12000上下, 所以必須使用pagination來解決</p>
+<p>Elastic search 提供API可對資料進行修改查詢等功能,<br>由於我使用python, 所以直接使用elasticsearch套件來call API,<br>安裝:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p>先call search API, 取得第一筆資料:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">result = es.search(</span><br><span class="line">    index=&quot;你的index&quot;,</span><br><span class="line">    body=query_body,</span><br><span class="line">    scroll=&#x27;2m&#x27;,</span><br><span class="line">    size=10000,</span><br><span class="line">    sort=&#x27;timestamp:asc&#x27;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>會拿到如下資料:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;_scroll_id&quot;: &quot;DnF1ZXJ5VGhlbkZldGNoDgAAAAAEwJa8Fml....&quot;,</span><br><span class="line">  &quot;_shards&quot;: &#123;</span><br><span class="line">    &quot;failed&quot;: 0,</span><br><span class="line">    &quot;skipped&quot;: 0,</span><br><span class="line">    &quot;successful&quot;: 10,</span><br><span class="line">    &quot;total&quot;: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;hits&quot;: &#123;</span><br><span class="line">    &quot;hits&quot;: [略],</span><br><span class="line">    &quot;max_score&quot;: null,</span><br><span class="line">    &quot;total&quot;: &#123;</span><br><span class="line">      &quot;relation&quot;: &quot;eq&quot;,</span><br><span class="line">      &quot;value&quot;: 12754</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;timed_out&quot;: false,</span><br><span class="line">  &quot;took&quot;: 3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中比較重要的幾個欄位有:</p>
+<ul>
+<li>_scroll_id: 後續的分頁查詢須帶這個id</li>
+<li>_shards: 該次query使用了多少shard</li>
+<li>took: es 查詢花費時間, 單位ms</li>
+<li>hits.hits: 是list, 實際的documents</li>
+<li>hits.total: 該query總筆數為多少<br>以該次query來說, 我hits.hits裡面會有10000筆, 因為我request一開始給定size&#x3D;10000,<br>size代表一頁拿多少筆, 預設為10, 最多為10000.</li>
+</ul>
+<p>後續的翻頁取資料, 方法就是call scroll API</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = es.scroll(scroll_id=&#x27;search給的_scroll_id&#x27;, scroll=&#x27;2m&#x27;)</span><br></pre></td></tr></table></figure>
+<p>該筆就可拿到剩餘的12754-10000&#x3D;2754筆資料</p>
+<p>那如果已經沒資料再繼續翻頁(call scroll)會怎樣?<br>他就給你hits.hits&#x3D;[]的response而已</p>
+<p>綜合以上的運作流程, 我們就可以寫出大概的流程了:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def handle():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">result = es.search() # query第一次</span><br><span class="line">handle(result)</span><br><span class="line"></span><br><span class="line">while(len(result[&#x27;hits.hits&#x27;])&gt;0): # 代表還有資料</span><br><span class="line">    result = es.scroll()</span><br><span class="line">    handle(result)</span><br></pre></td></tr></table></figure>
+
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記:"></a>後記:</h2><p>其實我花最多時間的部分在於查詢到底search跟scroll API要給一個scroll參數, 這是代表啥意思?<br>他其實是代表該次query之後這個view會維持多久, 以上面例子來說, 2m等於會維持2分鐘.</p>
+<p>再白話一點就是這兩分鐘之內, 如果你的資料有被異動, 你不會拿到新的資料,<br>這樣做也是挺合理的,<br>我可能每次翻頁後要做一些耗時的IO操作, 可能全部翻完頁要花5m, 這樣我就可以設定scroll&#x3D;1m-5m,<br>確保es給你的資料是程式開始執行瞬間的資料,<br>上面的scroll給1m-5m資料範圍是因為實際上要根據你總共翻幾頁, 要省事一點就直接設5m,<br>不然其實每次翻頁(call scroll)時帶的scroll參數其實都會再刷新view維持的時間.</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/10/14/elastic-search-api/" title="Elastic Search Api" target="_blank" rel="external">http://example.com/2023/10/14/elastic-search-api/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ric7705" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ric7705" target="_blank"><span class="text-dark">工作筆記</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>......</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2023/10/14/test/" title="test"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	<!-- 
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+        Pure Theme
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
